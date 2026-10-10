@@ -30329,7 +30329,7 @@ html body .owl-prev:hover, .owl-next:hover {
 
 .rd-navbar-static .rd-navbar-nav > li + li {
   margin-left: 10px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .rd-navbar-static.rd-navbar--is-stuck .rd-navbar-brand img {
@@ -30363,7 +30363,8 @@ html body .owl-prev:hover, .owl-next:hover {
 }
 
 .rd-navbar-fullwidth .rd-navbar-nav > li + li {
-  margin-left: 20px;
+  margin-left: 5px;
+  padding-left: 15px;
 }
 
 .rd-navbar-fullwidth.rd-navbar--is-stuck .rd-navbar-inner {
