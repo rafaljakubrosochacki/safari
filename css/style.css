@@ -98,6 +98,7 @@
  * Bootstrap Framework
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -318,6 +319,8 @@ td,
 th {
   padding: 0;
 }
+
+
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -4805,6 +4808,7 @@ a.badge:hover, a.badge:focus {
 .desc {
   max-width: 340px;
   margin: auto;
+  min-height: 170px;
 }
 
 a.thumbnail:hover,

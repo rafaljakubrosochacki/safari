@@ -20,6 +20,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
             integrity="sha512-UDJtJXfzfsiPPgnI5S1000FPLBHMhvzAMX15I+qG2E2OAzC9P1JzUwJOfnypXiOH7MRPaqzhPbBGDNNj7zBfoA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        /**
+         * Czeka na pojawienie się elementu w Shadow DOM.
+         * @param {HTMLElement} hostElement - Element nadrzędny (host) posiadający Shadow Root.
+         * @param {string} selector - Selektor CSS szukanego elementu wewnątrz Shadow DOM.
+         * @returns {Promise<HTMLElement>} - Obietnica zwracająca znaleziony element.
+         */
+        function waitForShadowElement(hostElement, selector) {
+            return new Promise((resolve) => {
+                // 1. Sprawdź, czy Shadow Root w ogóle istnieje
+                if (!hostElement || !hostElement.shadowRoot) {
+                    debugger
+                    console.error("Podany element nie ma struktury Shadow Root (lub jest ona zamknięta).");
+                    return;
+                }
+
+                const shadow = hostElement.shadowRoot;
+
+                // 2. Jeśli element już tam jest, zwróć go od razu
+                const immediateElement = shadow.querySelector(selector);
+                if (immediateElement) {
+                    return resolve(immediateElement);
+                }
+
+                // 3. Jeśli go nie ma, zacznij obserwować zmiany w Shadow DOM
+                const observer = new MutationObserver((mutations, obs) => {
+                    const element = shadow.querySelector(selector);
+                    if (element) {
+                        obs.disconnect(); // Zatrzymaj obserwowanie, gdy element się pojawi
+                        resolve(element); // Zwróć znaleziony element
+                    }
+                });
+
+                // Konfiguracja obserwatora: śledź dodawanie nowych elementów (childList) w całym drzewie (subtree)
+                observer.observe(shadow, {
+                    childList: true,
+                    subtree: true
+                });
+            });
+        }
+
+        /**
+         * Obserwuje zmiany w konkretnym elemencie DOM.
+         * @param {HTMLElement|string} target - Element DOM lub selektor CSS elementu, który chcemy obserwować.
+         * @param {Function} callback - Funkcja wywoływana przy każdej wykrytej zmianie.
+         * @param {Object} [options] - Opcjonalna konfiguracja (domyślnie śledzi wszystko).
+         * @returns {MutationObserver|null} - Zwraca obiekt obserwatora, co pozwala na jego późniejsze wyłączenie.
+         */
+        function watchElementChanges(target, callback, options = {}) {
+            // 1. Znajdź element, jeśli przekazano selektor tekstowy
+            const element = typeof target === 'string' ? document.querySelector(target) : target;
+
+            if (!element) {
+                console.error("Nie znaleziono wskazanego elementu do obserwacji.");
+                return null;
+            }
+
+            // 2. Domyślna konfiguracja: reaguj na zmiany dzieci, tekstu i atrybutów
+            const defaultOptions = {
+                childList: true,      // Śledź dodawanie/usuwanie elementów potomnych
+                subtree: true,        // Śledź zmiany w całym drzewie wewnątrz tego elementu (nie tylko bezpośrednie dzieci)
+                characterData: true,  // Śledź zmiany w samej treści tekstowej
+                attributes: true      // Śledź zmiany atrybutów (np. zmiana klasy, id, src, style)
+            };
+
+            // Połącz domyślne opcje z tymi przekazanymi przez użytkownika
+            const config = {...defaultOptions, ...options};
+
+            // 3. Utwórz obserwator
+            const observer = new MutationObserver((mutationsList, obs) => {
+                // Przekazujemy listę zmian oraz sam obiekt obserwatora do funkcji callback
+                callback(mutationsList, obs);
+            });
+
+            // 4. Rozpocznij obserwację
+            observer.observe(element, config);
+
+            // Zwracamy obiekt, aby można było wywołać na nim np. observer.disconnect()
+            return observer;
+        }
+
+    </script>
 </head>
 <body>
 <!-- Page-->
@@ -401,6 +483,17 @@
             </div>
         </section>
 
+
+        <section>
+            <div class="shell shell-wide">
+                <div class="sk-ww-google-reviews" data-embed-id="25721266">
+                </div>
+                <script src="https://widgets.sociablekit.com/google-reviews/widget.js" defer
+                ></script>
+            </div>
+        </section>
+
+
         <hr class="offset-top-96">
         <section>
             <div class="shell shell-wide">
@@ -430,6 +523,12 @@
                 $('.rd-navbar-toggle').trigger('click');
             }
         });
+        const host = document.querySelector('.sk-ww-google-reviews');
+        let watchElementChangesRef
+        watchElementChangesRef = watchElementChanges('.sk-ww-google-reviews', () => waitForShadowElement(host, '.tutorial_link').then((link) => {
+            link.style.color = 'transparent';
+            watchElementChangesRef.disconnect();
+        }))
     });
 </script>
 </body>
