@@ -1,538 +1,529 @@
 <!DOCTYPE html>
-<html lang="en" class="wide wow-animation">
+<html lang="pl" class="scroll-smooth">
 <head>
-    <!-- Site Title-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Przychodnia Weterynaryjna Safari</title>
-    <meta name="description" content="Przychodnia Weterynaryjna Safari">
+    <meta name="description" content="Przychodnia Weterynaryjna Safari w Łodzi – opieka dla psów, kotów i zwierząt egzotycznych.">
     <meta property="og:title" content="Przychodnia Weterynaryjna Safari">
-    <meta property="og:description" content="Przychodnia Weterynaryjna Safari">
+    <meta property="og:description" content="Przychodnia Weterynaryjna Safari w Łodzi – opieka dla psów, kotów i zwierząt egzotycznych.">
     <meta property="og:image" content="/images/logo.png">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
+    <meta name="theme-color" content="#552D5F">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest.json">
-    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300,300italic,400,600,700,900" rel="stylesheet" type="text/css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
-            integrity="sha512-UDJtJXfzfsiPPgnI5S1000FPLBHMhvzAMX15I+qG2E2OAzC9P1JzUwJOfnypXiOH7MRPaqzhPbBGDNNj7zBfoA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        /**
-         * Czeka na pojawienie się elementu w Shadow DOM.
-         * @param {HTMLElement} hostElement - Element nadrzędny (host) posiadający Shadow Root.
-         * @param {string} selector - Selektor CSS szukanego elementu wewnątrz Shadow DOM.
-         * @returns {Promise<HTMLElement>} - Obietnica zwracająca znaleziony element.
-         */
-        function waitForShadowElement(hostElement, selector) {
-            return new Promise((resolve) => {
-                // 1. Sprawdź, czy Shadow Root w ogóle istnieje
-                if (!hostElement || !hostElement.shadowRoot) {
-                    debugger
-                    console.error("Podany element nie ma struktury Shadow Root (lub jest ona zamknięta).");
-                    return;
-                }
-
-                const shadow = hostElement.shadowRoot;
-
-                // 2. Jeśli element już tam jest, zwróć go od razu
-                const immediateElement = shadow.querySelector(selector);
-                if (immediateElement) {
-                    return resolve(immediateElement);
-                }
-
-                // 3. Jeśli go nie ma, zacznij obserwować zmiany w Shadow DOM
-                const observer = new MutationObserver((mutations, obs) => {
-                    const element = shadow.querySelector(selector);
-                    if (element) {
-                        obs.disconnect(); // Zatrzymaj obserwowanie, gdy element się pojawi
-                        resolve(element); // Zwróć znaleziony element
-                    }
-                });
-
-                // Konfiguracja obserwatora: śledź dodawanie nowych elementów (childList) w całym drzewie (subtree)
-                observer.observe(shadow, {
-                    childList: true,
-                    subtree: true
-                });
-            });
-        }
-
-        /**
-         * Obserwuje zmiany w konkretnym elemencie DOM.
-         * @param {HTMLElement|string} target - Element DOM lub selektor CSS elementu, który chcemy obserwować.
-         * @param {Function} callback - Funkcja wywoływana przy każdej wykrytej zmianie.
-         * @param {Object} [options] - Opcjonalna konfiguracja (domyślnie śledzi wszystko).
-         * @returns {MutationObserver|null} - Zwraca obiekt obserwatora, co pozwala na jego późniejsze wyłączenie.
-         */
-        function watchElementChanges(target, callback, options = {}) {
-            // 1. Znajdź element, jeśli przekazano selektor tekstowy
-            const element = typeof target === 'string' ? document.querySelector(target) : target;
-
-            if (!element) {
-                console.error("Nie znaleziono wskazanego elementu do obserwacji.");
-                return null;
-            }
-
-            // 2. Domyślna konfiguracja: reaguj na zmiany dzieci, tekstu i atrybutów
-            const defaultOptions = {
-                childList: true,      // Śledź dodawanie/usuwanie elementów potomnych
-                subtree: true,        // Śledź zmiany w całym drzewie wewnątrz tego elementu (nie tylko bezpośrednie dzieci)
-                characterData: true,  // Śledź zmiany w samej treści tekstowej
-                attributes: true      // Śledź zmiany atrybutów (np. zmiana klasy, id, src, style)
-            };
-
-            // Połącz domyślne opcje z tymi przekazanymi przez użytkownika
-            const config = {...defaultOptions, ...options};
-
-            // 3. Utwórz obserwator
-            const observer = new MutationObserver((mutationsList, obs) => {
-                // Przekazujemy listę zmian oraz sam obiekt obserwatora do funkcji callback
-                callback(mutationsList, obs);
-            });
-
-            // 4. Rozpocznij obserwację
-            observer.observe(element, config);
-
-            // Zwracamy obiekt, aby można było wywołać na nim np. observer.disconnect()
-            return observer;
-        }
-
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS (CDN) + konfiguracja kolorów Safari -->
+    <script src="https://cdn.tailwindcss.com/3.4.16?plugins=typography"></script>
+    <script src="js/tailwind.config.js"></script>
 </head>
-<body>
-<!-- Page-->
-<div class="page text-center">
-    <!-- Page Header-->
-    <header class="page-head">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-            <nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed"
-                 data-md-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fullwidth"
-                 data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static"
-                 data-sm-stick-up-offset="50px" data-lg-stick-up-offset="90px" class="rd-navbar">
-                <div class="rd-navbar-inner">
-                    <!-- RD Navbar Panel-->
-                    <div class="rd-navbar-panel">
-                        <!-- RD Navbar Toggle-->
-                        <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span>
-                        </button>
-                        <!-- RD Navbar Brand-->
-                        <div class="rd-navbar-brand"><a href="index.html#" class="brand-name"><img src="images/logo.png"
-                                                                                                  width="300"
-                                                                                                  alt="Przychodnia Weterynaryjna Safari"></a>
+<body class="min-h-screen overflow-x-clip">
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-plum-700 focus:px-4 focus:py-2 focus:text-white">Przejdź do treści</a>
+<header class="sticky top-0 z-50">
+    <div class="container-x pt-3">
+        <div data-header-bar class="flex h-16 items-center justify-between gap-4 rounded-2xl bg-white/80 px-3 ring-1 ring-plum-900/5 backdrop-blur-xl transition-all duration-300 sm:px-4 lg:h-20 lg:px-6">
+            <a href="index.html" class="shrink-0" aria-label="Przychodnia Weterynaryjna Safari – strona główna">
+                <img src="images/logo.png" width="300" alt="Przychodnia Weterynaryjna Safari" class="h-10 w-auto sm:h-11 lg:h-14">
+            </a>
+            <nav class="hidden lg:block" aria-label="Główna nawigacja">
+                <ul class="flex items-center text-[15px] font-bold text-plum-900">
+                    <li><a class="nav-link" href="index.html#contact">Kontakt</a></li>
+                    <li class="group relative">
+                        <a class="nav-link inline-flex items-center gap-1.5" href="index.html#services">Zakres usług <i class="fa-solid fa-chevron-down text-[10px] transition duration-300 group-hover:rotate-180"></i></a>
+                        <div class="invisible absolute left-1/2 top-full -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 w-[36rem]">
+                            <div class="grid grid-cols-2 gap-1 rounded-2xl bg-white p-3 shadow-2xl shadow-plum-900/15 ring-1 ring-plum-900/5">
+                            <a href="zwierzeta-egzotyczne.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-leaf-100 text-leaf-700"><i class="fa-solid fa-frog"></i></span>Zwierzęta egzotyczne</a><a href="profilaktyka.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-lagoon-100 text-lagoon-700"><i class="fa-solid fa-shield-heart"></i></span>Profilaktyka, diagnostyka i leczenie</a><a href="chirurgia.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ember-100 text-ember-700"><i class="fa-solid fa-scissors"></i></span>Chirurgia</a><a href="stomatologia.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sun-100 text-sun-700"><i class="fa-solid fa-tooth"></i></span>Stomatologia</a><a href="rtg.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-plum-100 text-plum-700"><i class="fa-solid fa-x-ray"></i></span>RTG</a><a href="rtg-stomatologiczne.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-lagoon-100 text-lagoon-700"><i class="fa-solid fa-teeth"></i></span>RTG stomatologiczne</a><a href="usg.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ember-100 text-ember-700"><i class="fa-solid fa-wave-square"></i></span>USG</a><a href="laboratorium.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-leaf-100 text-leaf-700"><i class="fa-solid fa-microscope"></i></span>Laboratorium</a><a href="dermatologia.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sun-100 text-sun-700"><i class="fa-solid fa-paw"></i></span>Dermatologia</a><a href="chip.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-plum-100 text-plum-700"><i class="fa-solid fa-passport"></i></span>Czipowanie i paszporty EU</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="rd-navbar-nav-wrap">
-                        <!-- RD Navbar Nav-->
-                        <ul class="rd-navbar-nav">
-                            <li><a href="index.html#contact" data-toggle="collapse" data-target=".navbar-collapse">Kontakt</a>
-                            </li>
-                            <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="index.html#services" data-toggle="collapse" data-target=".navbar-collapse">Zakres
-                                usług</a>
-                                <!-- RD Navbar Dropdown-->
-                                <ul class="rd-navbar-dropdown">
-                                    <li><a href="zwierzeta-egzotyczne.html">Zwierzęta egzotyczne</a></li>
-                                    <li><a href="profilaktyka.html">Profilaktyka, diagnostyka i leczenie</a></li>
-                                    <li><a href="chirurgia.html">Chirurgia</a></li>
-                                    <li><a href="stomatologia.html">Stomatologia</a></li>
-                                    <li><a href="rtg.html">RTG</a></li>
-                                    <li><a href="rtg-stomatologiczne.html">RTG stomatologiczne</a></li>
-                                    <li><a href="usg.html">Usg</a></li>
-                                    <li><a href="laboratorium.html">Laboratorium</a></li>
-                                    <li><a href="dermatologia.html">Dermatologia</a></li>
-
-                                    <li><a href="chip.html">Czipowanie i paszporty EU</a></li>
-
-                                </ul>
-                                </li>
-                            <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="index.html#team"
-                                                                                     data-toggle="collapse"
-                                                                                     data-target=".navbar-collapse">Zespół
-                            </a>
-                                <!-- RD Navbar Dropdown-->
-                                <ul class="rd-navbar-dropdown">
-                                    <li><a href="zespol.html#lekarze">Lekarze
-                                        weterynarii</a></li>
-                                    <li><a href="zespol.html#technicy">Technicy
-                                        weterynarii</a></li>
-                                    <li><a href="zespol.html#recepcja">Recepcja
-                                    </a></li>
-                                    <li><a href="zespol.html#administracja">Administracja
-                                    </a></li>
-                                </ul>
-                            </li>
-                            <li><a data-target=".navbar-collapse" data-toggle="collapse" href="dla-opiekuna.html">Dla
-                                opiekuna
-                            </a></li>
-                            <li><a class="appointment" data-target=".navbar-collapse" data-toggle="collapse"
-                                   href="index.html#wizyta">Umów
-                                wizytę</a></li>
-                            <li><a href="index.html#adoption" data-toggle="collapse" data-target=".navbar-collapse">Kącik adopcyjny</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    </li>
+                    <li class="group relative">
+                        <a class="nav-link inline-flex items-center gap-1.5" href="zespol.html">Zespół <i class="fa-solid fa-chevron-down text-[10px] transition duration-300 group-hover:rotate-180"></i></a>
+                        <div class="invisible absolute left-1/2 top-full -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 w-64">
+                            <div class="rounded-2xl bg-white p-3 shadow-2xl shadow-plum-900/15 ring-1 ring-plum-900/5"><a href="zespol.html#lekarze" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-user-doctor w-5 text-center text-ember-500"></i>Lekarze weterynarii</a><a href="zespol.html#technicy" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-syringe w-5 text-center text-ember-500"></i>Technicy weterynarii</a><a href="zespol.html#recepcja" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-phone w-5 text-center text-ember-500"></i>Recepcja</a><a href="zespol.html#administracja" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-briefcase w-5 text-center text-ember-500"></i>Administracja</a></div>
+                        </div>
+                    </li>
+                    <li><a class="nav-link" href="dla-opiekuna.html">Dla opiekuna</a></li>
+                    <li><a class="nav-link" href="index.html#adoption">Kącik adopcyjny</a></li>
+                </ul>
             </nav>
+            <div class="flex items-center gap-2">
+                <a href="tel:+48422203501" class="hidden h-11 w-11 place-items-center rounded-full bg-plum-50 text-plum-700 transition hover:bg-plum-100 sm:grid lg:hidden xl:grid" aria-label="Zadzwoń +48 42 220 35 01"><i class="fa-solid fa-phone"></i></a>
+                <a href="index.html#wizyta" class="btn btn-primary hidden sm:inline-flex"><i class="fa-regular fa-calendar-check"></i> Umów wizytę</a>
+                <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"
+                        class="grid h-11 w-11 place-items-center rounded-full bg-plum-700 text-white transition hover:bg-plum-800 lg:hidden">
+                    <i data-icon-open class="fa-solid fa-bars"></i><i data-icon-close class="fa-solid fa-xmark hidden"></i>
+                </button>
+            </div>
         </div>
-    </header>
-    <!-- Page Content-->
-    <main class="page-content">
-        <div id="start"></div>
-        <hr>
-        <section class="section-80 section-md-34 section-title section-title-left">
-            <div class="shell shell-wide" style="display: flex">
-                <div class="page-counter cell-md-12 cell-lg-12"><img src="images/1.png" width="441"
-                                                                     alt="hello start"
-                                                                     class="img-responsive center-block">
-                </div>
-                <div class="range range-start range-xs-center offset-top-0 offset-md-top-65">
-                    <div class="cell-md-12 cell-lg-12">
-                        <h4>Przychodnia Weterynaryjna Safari w Łodzi – opieka dla psów, kotów i zwierząt egzotycznych!</h4>
-                        <p>
-                            W Przychodni Safari w Łodzi zapewniamy kompleksową opiekę weterynaryjną dla zwierząt
-                            towarzyszących. Przyjmujemy psy, koty, ale pomoc mogą u nas uzyskać także króliki, gryzonie,
-                            gady, ptaki, płazy, dzikie kotowate, małpy, kangury i wiele innych. Naszym celem jest nie
-                            tylko leczenie, ale przede wszystkim profilaktyka i wspieranie zdrowia
-                            zwierząt na każdym etapie ich życia. Tworzymy wyjątkowe miejsce, w którym Wasi pupile znajdą
-                            specjalistyczną pomoc, a Wy
-                            będziecie mogli czuć się spokojnie o ich zdrowie. Każdemu pacjentowi zapewniamy kompleksową
-                            opiekę weterynaryjną, czas, troskę, oraz pełne
-                            zaangażowanie.
-                        </p>
-                    </div>
-                </div>
+        <div id="mobile-menu" class="mt-2 hidden max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-white p-3 text-base font-bold text-plum-900 shadow-2xl shadow-plum-900/15 ring-1 ring-plum-900/5 lg:hidden">
+            <a href="index.html#contact" class="block rounded-xl px-3 py-3 hover:bg-plum-50">Kontakt</a>
+            <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 hover:bg-plum-50">Zakres usług <i class="fa-solid fa-chevron-down text-xs transition group-open:rotate-180"></i></summary>
+                <div class="mb-2 ml-3 border-l-2 border-sun-200 pl-2 text-[15px] font-semibold"><a href="zwierzeta-egzotyczne.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Zwierzęta egzotyczne</a><a href="profilaktyka.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Profilaktyka, diagnostyka i leczenie</a><a href="chirurgia.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Chirurgia</a><a href="stomatologia.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Stomatologia</a><a href="rtg.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">RTG</a><a href="rtg-stomatologiczne.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">RTG stomatologiczne</a><a href="usg.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">USG</a><a href="laboratorium.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Laboratorium</a><a href="dermatologia.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Dermatologia</a><a href="chip.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Czipowanie i paszporty EU</a></div>
+            </details>
+            <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 hover:bg-plum-50">Zespół <i class="fa-solid fa-chevron-down text-xs transition group-open:rotate-180"></i></summary>
+                <div class="mb-2 ml-3 border-l-2 border-sun-200 pl-2 text-[15px] font-semibold"><a href="zespol.html#lekarze" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Lekarze weterynarii</a><a href="zespol.html#technicy" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Technicy weterynarii</a><a href="zespol.html#recepcja" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Recepcja</a><a href="zespol.html#administracja" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Administracja</a></div>
+            </details>
+            <a href="dla-opiekuna.html" class="block rounded-xl px-3 py-3 hover:bg-plum-50">Dla opiekuna</a>
+            <a href="index.html#adoption" class="block rounded-xl px-3 py-3 hover:bg-plum-50">Kącik adopcyjny</a>
+            <div class="mt-2 grid gap-2 border-t border-plum-900/5 pt-3 sm:grid-cols-2">
+                <a href="index.html#wizyta" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Umów wizytę</a>
+                <a href="tel:+48422203501" class="btn btn-ghost"><i class="fa-solid fa-phone"></i> +48 42 220 35 01</a>
             </div>
-        </section>
-        <div id="contact"></div>
-        <hr class="offset-top-96">
-        <section>
-            <div class="shell shell-wide">
-                <div class="range text-sm-left">
-                    <div class="cell-xl-9 cell-md-9">
-                        <div style="background: url('images/3.jpg') center; background-size: cover; height: 100%"
-                             class="jumbotron">
-                        </div>
-                    </div>
-                    <div class="cell-md-3 cell-xl-3 cell-xs-middle offset-top-40 offset-md-top-0">
-                        <div class="range">
-                            <div class="cell-md-12 cell-sm-12 text-sm-center text-md-left">
-                                <div class="inset-xl-left-40">
-                                    <h4>Media społecznościowe</h4>
-                                    <ul class="list-inline offset-top-20 offset-md-top-40">
-                                        <li><a target="_blank" href="https://www.facebook.com/przychodniasafari"
-                                               class="icon icon-gray icon-circle icon-xs fa-facebook"></a></li>
-                                        <li><a target="_blank" href="https://www.tiktok.com/@przychodnia.safari"
-                                               class="icon icon-gray icon-circle icon-xs fa-tiktok"></a></li>
-
-                                        <li><a target="_blank" href="https://www.instagram.com/przychodnia_safari"
-                                               class="icon icon-gray icon-circle icon-xs fa-instagram"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="cell-md-12 cell-sm-6 offset-top-40 offset-sm-top-40 offset-md-top-80">
-                                <div class="inset-xl-left-40">
-                                    <h4>Kontakt</h4>
-                                    <div class="offset-top-20 offset-md-top-40"><span
-                                            class="text-middle icon icon-xs text-primary inset-right-10 material-icons-phonelink_ring"></span><a
-                                            href="tel:+48422203501" class="extra-big">+48 42 220 35 01</a></div>
-                                    <div class="offset-top-10 text-xs-nowrap"><span
-                                            class="text-middle icon icon-xs text-primary inset-right-10 material-icons-email"></span><a
-                                            href="mailto:przychodniasafari@gmail.com" class="big">przychodniasafari@gmail.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cell-md-12 cell-sm-6 offset-top-20 offset-sm-top-20 offset-md-top-20">
-                                <div class="inset-xl-left-40">
-                                    <h4>Lokalizacja</h4>
-                                    <div class="offset-top-20 offset-md-top-40">
-                                        <address>
-                                        <h5 class="text-sbold text-graydark">
-
-                                                ul. Julianowska 60 <br>
-                                                (róg. ul. Owocowej)<br>
-                                                <br>
-                                                Łódź
-                                                <br class='veil reveal-md-block'>
-                                                91-473, Łódź<br>
-                                                Polska<br>
-                                                <br>
-                                                Godziny otwarcia:<br>
-                                                Pn-pt: 08:00 - 21:00<br>
-                                                Sb: 09:00 - 15:00
-                                        </h5>
-                                        </address>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div id="services"></div>
-        <hr class="offset-top-96">
-        <section class="section-80 section-md-34 section-title section-title-right">
-            <div class="shell shell-wide" style="display: flex">
-                <div class="range range-xs-center offset-top-0 offset-md-top-65 range-services">
-                    <div class="cell-md-8 cell-lg-6">
-                        <h4>Zakres usług</h4>
-                        <p style="font-size: 18px; margin-top: 20px;">
-                            <a href="zwierzeta-egzotyczne.html">Zwierzęta egzotyczne</a><br>
-                            <a href="profilaktyka.html">Profilaktyka</a><br>
-                            <a href="stomatologia.html">Chirurgia</a><br>
-                            <a href="stomatologia.html">Stomatologia</a><br>
-                            <a href="rtg.html">RTG</a><br>
-                            <a href="rtg-stomatologiczne.html">RTG stomatologiczne</a><br>
-                            <a href="usg.html">Usg</a><br>
-                            <a href="laboratorium.html">Laboratorium</a><br>
-                            <a href="dermatologia.html">Dermatologia</a><br>
-                            <a href="chip.html">Czipowanie i paszporty EU</a><br>
-                        </p>
-                    </div>
-                </div>
-                <div class="page-counter page-counter-bottom page-counter-gray" style="width: 70%; margin-top: auto;">
-                    <img src="images/2.png"
-                         width="441" alt="services"
-                         class="img-responsive center-block">
-                </div>
-            </div>
-        </section>
-        <div id="team"></div>
-        <hr class="offset-top-96">
-        <section class="section-80 section-md-34 section-title section-title-right">
-            <div class="cell-md-12 cell-lg-12">
-                <h4><a href="zespol.html">Zespół</a></h4>
-            </div>
-            <!-- Owl Carousel-->
-            <div data-dots="true" data-items="1" data-sm-items="2" data-md-items="3" data-margin="30"
-                 data-lg-margin="84" data-mouse-drag="false"
-                 class="owl-carousel offset-top-40 offset-lg-top-96 owl-dots-modile"
-                 style="width: 80%; margin-left: auto; margin-right: auto;">
-                <div class="thumbnail"><img
-                        src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/6814da8b-1905-4a24-ad0e-c0a0891ea436/1m4beh/src/109cdadb-6b87-450a-8c44-dc80438d388a-05679837-97bc-422b-a490-1ca1863a6a66-lukasz-rawicki2.png"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Łukasz Rawicki</h4>
-                        <p class="text-graylight small text-bold text-uppercase">zwierzęta egzotyczne(króliki, gryzonie,
-                            gady, ptaki), psy, koty</p><a
-                            href="index.html#wizyta"
-                            class="caption-link btn btn-default">Umów wizytę</a>
-                    </div>
-                </div>
-                <div class="thumbnail"><a href="paulina-banaszkiewicz.html"><img
-                        src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/229e9619-2822-4891-b0ef-06bd88a8995e/uqx23b/src/5e5f1fbe-9e68-4eec-93cd-ee87aa22f8d4-60571249-84ba-43ed-bb3d-ed28317067f6-lek.-wet.-paulina-banaszkiewicz1.png"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive"></a>
-                    <div class="caption">
-                        <h4><a href="paulina-banaszkiewicz.html">lek. wet. Paulina Banaszkiewicz</a></h4>
-                        <p class="text-graylight small text-bold text-uppercase">zwierzęta egzotyczne(króliki i
-                            gryzonie), psy, koty</p><a href="index.html#wizyta"
-                                                       class="caption-link btn btn-default">Umów wizytę</a>
-                    </div>
-                </div>
-                <div class="thumbnail"><img
-                        src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/d47ceeeb-cf4b-4f4a-b0be-199bf5864686/d42epp/src/91f5d1dd-40a4-4288-8cfa-616a2848baec-e7bea66c-fc83-4051-959e-9f3c7c95a138-dominika-gruszczynska2.png"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Dominika Gruszczyńśka</h4>
-                        <p class="text-graylight small text-bold text-uppercase">psy i koty</p><a href="index.html#wizyta"
-                                                                                                  class="caption-link btn btn-default">Umów
-                        wizytę</a>
-                    </div>
-                </div>
-
-                <div class="thumbnail"><img
-                        src="https://img.magnific.com/free-vector/paw-print-heart-outline-style_78370-6318.jpg"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Michał Sawicki</h4>
-                        <p class="text-graylight small text-bold text-uppercase">zwierzęta egzotyczne(króliki,
-                            gryzonie), psy, koty</p><a href="index.html#wizyta"
-                                                       class="caption-link btn btn-default">Umów
-                        wizytę</a>
-                    </div>
-                </div>
-                <div class="thumbnail"><img
-                        src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/2c0a45dc-4058-4662-80d7-aae594a05711/1t2dpg/src/002431ad-56ec-45bf-a8bf-662d92adfb46-303ccc64-0f29-4af0-9443-a91270c98bba-alicja-chalupczynska2.png"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Alicja Chałupczyńska</h4>
-                        <p class="text-graylight small text-bold text-uppercase">psy i koty</p><a href="index.html#wizyta"
-                                                                                                  class="caption-link btn btn-default">Umów
-                        wizytę</a>
-                    </div>
-                </div>
-
-
-                <div class="thumbnail"><img
-                        src="https://img.magnific.com/free-vector/paw-print-heart-outline-style_78370-6318.jpg"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Anna Spychalska</h4>
-                        <p class="text-graylight small text-bold text-uppercase">psy i koty</p><a
-                            href="index.html#wizyta"
-                            class="caption-link btn btn-default">Umów
-                        wizytę</a>
-                    </div>
-                </div>
-
-                <div class="thumbnail"><img
-                        src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/38d2e90a-9da4-4f56-8f6d-3bdd9ff38126/2un5ak/src/83d4e343-504e-40b9-ad3b-ec1da06e5176-c8536443-3f9e-4b28-8b94-c93614ac1bb4-marta-dabioch2.png"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Marta Dabioch</h4>
-                        <p class="text-graylight small text-bold text-uppercase">USG psy i koty</p><a
-                            href="index.html#wizyta"
-                            class="caption-link btn btn-default">Umów
-                        wizytę</a>
-                    </div>
-                </div>
-
-
-                <div class="thumbnail"><img
-                        src="https://img.magnific.com/free-vector/paw-print-heart-outline-style_78370-6318.jpg"
-                        width="480" height="321" alt="veterinarian"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>lek. wet. Agnieszka Bitner</h4>
-                        <p class="text-graylight small text-bold text-uppercase">króliki i gryzonie, gady, ptaki, zwierzęta egzotyczne</p><a href="#wizyta"
-                                                                                                                                             class="caption-link btn btn-default">Umów
-                        wizytę</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div id="wizyta"></div>
-        <hr class="offset-top-96">
-        <section>
-            <div class="shell shell-wide section-92 section-lg-bottom-148 bg-img-01">
-                <hr class="divider">
-                <h4>Umów wizytę on-line</h4>
-                <div class="range range-xs-center text-left offset-top-40 offset-lg-top-80">
-                    <div class="cell-xs-10 cell-md-5"
-                         style="border: 1px solid gray; margin: 20px; padding: 0">
-                        <a href="https://www.wettermin.pl/lecznice/lodz/3592" target="_blank">
-                            <div style="display: flex; width: 100%; height: 200px; background-image: url(https://static-assets.sitesbi.com/templates/t8/images/wettermin/wettermin_bg1_1920.jpg);">
-                                <h1 style="color: white; margin: auto;">WetTermin</h1>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="cell-xs-10 cell-md-5"
-                         style="border: 1px solid gray; margin: 20px; padding: 0">
-                        <a style="color: white;" href="https://safari-lodz.rezerwacja.vetineo.com" target="_blank">
-                            <div style="display: flex; width: 100%; height: 200px;">
-                                <h1 style="margin: auto;"><img alt="vetineo"
-                                        src="https://static.sitesbi.com/8f9cdb48-8ad6-471d-ab41-e952cf9fd51e/images/full-size/860fb6a1-45e9-4d33-be45-2836148dd808-vetineo-logo.png"/>
-                                </h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div id="adoption"></div>
-        <hr class="offset-top-96">
-        <section class="section-80 section-md-34 section-title section-title-right">
-            <div class="cell-md-12 cell-lg-12">
-                <h4>Kącik adopcyjny</h4>
-            </div>
-            <!-- Owl Carousel-->
-            <div data-dots="true" data-items="1" data-sm-items="2" data-md-items="3" data-margin="30"
-                 data-lg-margin="84" data-mouse-drag="false"
-                 class="owl-carousel offset-top-40 offset-lg-top-96 owl-dots-modile"
-                 style="width: 80%; margin-left: auto; margin-right: auto;">
-                <div class="thumbnail"><img
-                        src="images/bajkabojka/1.jpeg"
-                        width="480" height="321" alt="animal"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>Bajka i Bójka</h4>
-                        <p class="text-graylight small text-bold text-uppercase">Siostry szukają domu w dwupaku</p><a href="bojkabajka.html"
-                                                       class="caption-link btn btn-default">więcej</a>
-                    </div>
-                </div>
-                <div class="thumbnail"><img
-                        src="images/bastek/1.jpeg"
-                        width="480" height="321" alt="animal"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>Bastek</h4>
-                        <p class="text-graylight small text-bold text-uppercase">Rudzielec po przejściach</p><a href="bastek.html"
-                                                                                                                      class="caption-link btn btn-default">więcej</a>
-                    </div>
-                </div>
-                <div class="thumbnail"><img
-                        src="images/jolka/2.jpeg"
-                        width="480" height="321" alt="animal"
-                        class="img-responsive">
-                    <div class="caption">
-                        <h4>Jolka</h4>
-                        <p class="text-graylight small text-bold text-uppercase">Jolka, Jolka pamiętasz</p><a href="jolka.html"
-                                                                                                                      class="caption-link btn btn-default">więcej</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section>
-            <div class="shell shell-wide">
-                <div class="sk-ww-google-reviews" data-embed-id="25721266">
-                </div>
-                <script src="https://widgets.sociablekit.com/google-reviews/widget.js" defer
-                ></script>
-            </div>
-        </section>
-
-
-        <hr class="offset-top-96">
-        <section>
-            <div class="shell shell-wide">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2571.3894448444044!2d19.45405211105026!3d51.80123776471635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471bcaf235390961%3A0x844b1350a19a309!2sSafari%20Przychodnia%20Weterynaryjna!5e1!3m2!1spl!2spl!4v1786571986492!5m2!1spl!2spl"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
-        </section>
-    </main>
-    <!-- Page Footer-->
-    <footer class="page-footer">
-        <div class="container"><span>&#169;</span> <span id="copyright-year"></span>
-            <!--            <hr class="divider divider-default divider-vertical">-->
-            <!--            <a href="privacy.html">Polityka prywatności</a>-->
         </div>
-    </footer>
-    <!-- {%FOOTER_LINK}-->
-</div>
-<!-- Java script-->
-<script src="js/core.min.js"></script>
-<script src="js/script.js"></script>
+    </div>
+</header>
+<main id="main">
 
-<script>
-    $(document).ready(function () {
-        $('.rd-navbar-nav li a').on('click', function () {
-            if ($('.rd-navbar-toggle').hasClass('active')) {
-                $('.rd-navbar-toggle').trigger('click');
-            }
-        });
-        const host = document.querySelector('.sk-ww-google-reviews');
-        let watchElementChangesRef
-        watchElementChangesRef = watchElementChanges('.sk-ww-google-reviews', () => waitForShadowElement(host, '.tutorial_link').then((link) => {
-            link.style.color = 'transparent';
-            watchElementChangesRef.disconnect();
-        }))
-    });
-</script>
+<!-- HERO -->
+<section id="start" class="relative isolate">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-28 bottom-0 -z-10 overflow-hidden [mask-image:linear-gradient(to_bottom,black_55%,transparent)]">
+        <div class="absolute -left-32 -top-40 h-[26rem] w-[26rem] animate-blob rounded-full bg-sun/30 blur-3xl"></div>
+        <div class="absolute -right-24 top-10 h-[30rem] w-[30rem] animate-blob rounded-full bg-lagoon/25 blur-3xl [animation-delay:-5s]"></div>
+        <div class="absolute bottom-0 left-1/3 h-72 w-72 animate-blob rounded-full bg-ember/20 blur-3xl [animation-delay:-9s]"></div>
+    </div>
+    <div class="container-x grid items-center gap-14 pb-20 pt-10 lg:grid-cols-12 lg:pb-28 lg:pt-16">
+        <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-bold text-plum-700 ring-1 ring-plum-900/10 backdrop-blur">
+                <span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-leaf opacity-60"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-leaf"></span></span>
+                Łódź · ul. Julianowska 60
+            </span>
+            <h1 class="mt-6 font-display text-5xl font-black leading-[0.95] tracking-tight text-plum-800 sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+                Różne gatunki.<br>
+                <span class="relative inline-block text-ember-500">Ta sama troska.
+                    <svg aria-hidden="true" viewBox="0 0 300 20" class="absolute -bottom-3 left-0 h-4 w-full text-sun" preserveAspectRatio="none"><path d="M2 14 C 60 2, 120 22, 180 10 S 270 4, 298 12" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+                </span>
+            </h1>
+            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-plum-950/70 sm:text-xl">
+                Przychodnia Weterynaryjna Safari w Łodzi – opieka dla <strong class="text-plum-800">psów, kotów i zwierząt egzotycznych</strong>. Leczymy, diagnozujemy i przede wszystkim dbamy o profilaktykę na każdym etapie życia Waszych pupili.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a href="#wizyta" class="btn btn-primary !px-7 !py-4 !text-base"><i class="fa-regular fa-calendar-check"></i> Umów wizytę on-line</a>
+                <a href="tel:+48422203501" class="btn btn-ghost !px-7 !py-4 !text-base"><i class="fa-solid fa-phone"></i> +48 42 220 35 01</a>
+            </div>
+            <dl class="mt-10 grid max-w-xl grid-cols-3 gap-3">
+                <div class="rounded-2xl bg-white/70 p-4 ring-1 ring-plum-900/5 backdrop-blur"><dt class="text-[11px] font-extrabold uppercase tracking-wider text-plum-950/50">Pon – Pt</dt><dd class="mt-1 font-display text-base font-extrabold text-plum-800 sm:text-xl">8 – 21</dd></div>
+                <div class="rounded-2xl bg-white/70 p-4 ring-1 ring-plum-900/5 backdrop-blur"><dt class="text-[11px] font-extrabold uppercase tracking-wider text-plum-950/50">Sobota</dt><dd class="mt-1 font-display text-base font-extrabold text-plum-800 sm:text-xl">9 – 15</dd></div>
+                <div class="rounded-2xl bg-white/70 p-4 ring-1 ring-plum-900/5 backdrop-blur"><dt class="text-[11px] font-extrabold uppercase tracking-wider text-plum-950/50">Pacjenci</dt><dd class="mt-1 font-display text-base font-extrabold text-plum-800 sm:text-xl">30 g – 300 kg</dd></div>
+            </dl>
+        </div>
+        <div class="relative mx-auto w-full max-w-[17rem] sm:max-w-sm lg:col-span-5 lg:max-w-md">
+            <div aria-hidden="true" class="absolute inset-0 -rotate-6 rounded-[2.5rem] bg-plum-700"></div>
+            <img src="images/1.png" width="441" alt="Safari – różne gatunki, ta sama troska" class="relative rotate-2 rounded-[2.5rem] shadow-2xl shadow-plum-900/30 transition duration-700 hover:rotate-0">
+            <div class="absolute -left-4 top-10 animate-float rounded-2xl bg-white px-4 py-3 shadow-xl ring-1 ring-plum-900/5 sm:-left-12">
+                <p class="flex items-center gap-2 text-sm font-extrabold text-plum-800"><span class="grid h-8 w-8 place-items-center rounded-lg bg-leaf-100 text-leaf-600"><i class="fa-solid fa-frog"></i></span>Gady i płazy</p>
+            </div>
+            <div class="absolute -right-3 top-1/2 animate-float rounded-2xl bg-white px-4 py-3 shadow-xl ring-1 ring-plum-900/5 [animation-delay:-2s] sm:-right-10">
+                <p class="flex items-center gap-2 text-sm font-extrabold text-plum-800"><span class="grid h-8 w-8 place-items-center rounded-lg bg-ember-100 text-ember-600"><i class="fa-solid fa-dove"></i></span>Ptaki</p>
+            </div>
+            <div class="absolute -bottom-6 left-4 animate-float rounded-2xl bg-white px-4 py-3 shadow-xl ring-1 ring-plum-900/5 [animation-delay:-4s]">
+                <p class="flex items-center gap-2 text-sm font-extrabold text-plum-800"><span class="grid h-8 w-8 place-items-center rounded-lg bg-sun-100 text-sun-700"><i class="fa-solid fa-carrot"></i></span>Króliki i gryzonie</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<section aria-label="Gatunki, które leczymy" class="relative -rotate-1 border-y border-plum-900/10 bg-white py-5">
+    <div class="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <ul class="flex shrink-0 animate-marquee motion-reduce:animate-none"><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-dog text-plum-700"></i>Psy<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-cat text-ember-600"></i>Koty<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-carrot text-lagoon-700"></i>Króliki<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-cheese text-sun-700"></i>Gryzonie<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-dragon text-leaf-600"></i>Gady<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-dove text-plum-700"></i>Ptaki<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-frog text-ember-600"></i>Płazy<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-paw text-lagoon-700"></i>Dzikie kotowate<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-tree text-sun-700"></i>Małpy<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-mountain-sun text-leaf-600"></i>Kangury<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-dog text-plum-700"></i>Psy<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-cat text-ember-600"></i>Koty<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-carrot text-lagoon-700"></i>Króliki<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-cheese text-sun-700"></i>Gryzonie<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-dragon text-leaf-600"></i>Gady<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-dove text-plum-700"></i>Ptaki<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-frog text-ember-600"></i>Płazy<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-paw text-lagoon-700"></i>Dzikie kotowate<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-tree text-sun-700"></i>Małpy<span class="ml-6 text-sun">✦</span></li><li class="flex items-center gap-3 whitespace-nowrap px-6 font-display text-2xl font-extrabold text-plum-800 sm:text-3xl"><i class="fa-solid fa-mountain-sun text-leaf-600"></i>Kangury<span class="ml-6 text-sun">✦</span></li></ul>
+    </div>
+</section>
+
+<!-- O NAS -->
+<section class="container-x mt-24 lg:mt-32">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5" data-reveal>
+            <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>O nas</p>
+            <h2 class="section-title mt-4">Opieka dla psów, kotów i zwierząt egzotycznych</h2>
+        </div>
+        <div class="lg:col-span-7" data-reveal data-reveal-delay="120">
+            <p class="text-lg leading-relaxed text-plum-950/75">
+                W Przychodni Safari w Łodzi zapewniamy kompleksową opiekę weterynaryjną dla zwierząt towarzyszących. Przyjmujemy psy, koty, ale pomoc mogą u nas uzyskać także króliki, gryzonie, gady, ptaki, płazy, dzikie kotowate, małpy, kangury i wiele innych. Naszym celem jest nie tylko leczenie, ale przede wszystkim profilaktyka i wspieranie zdrowia zwierząt na każdym etapie ich życia.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-plum-950/75">
+                Tworzymy wyjątkowe miejsce, w którym Wasi pupile znajdą specjalistyczną pomoc, a Wy będziecie mogli czuć się spokojnie o ich zdrowie. Każdemu pacjentowi zapewniamy kompleksową opiekę weterynaryjną, czas, troskę oraz pełne zaangażowanie.
+            </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-3xl bg-lagoon-50 p-5 ring-1 ring-lagoon-200"><i class="fa-solid fa-shield-heart text-2xl text-lagoon-700"></i><p class="mt-3 font-extrabold text-plum-800">Profilaktyka</p><p class="mt-1 text-sm text-plum-950/60">na każdym etapie życia</p></div>
+                <div class="rounded-3xl bg-sun-50 p-5 ring-1 ring-sun-200"><i class="fa-solid fa-dragon text-2xl text-sun-700"></i><p class="mt-3 font-extrabold text-plum-800">Egzotyki</p><p class="mt-1 text-sm text-plum-950/60">współpraca z ogrodami zoo</p></div>
+                <div class="rounded-3xl bg-ember-50 p-5 ring-1 ring-ember-200"><i class="fa-solid fa-microscope text-2xl text-ember-600"></i><p class="mt-3 font-extrabold text-plum-800">Diagnostyka</p><p class="mt-1 text-sm text-plum-950/60">RTG, USG, laboratorium</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- USŁUGI -->
+<section id="services" class="container-x mt-24 scroll-mt-28 lg:mt-32">
+    <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
+        <div>
+            <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>Co robimy</p>
+            <h2 class="section-title mt-4">Zakres usług</h2>
+        </div>
+        <p class="max-w-md text-plum-950/65">Od profilaktyki, przez nowoczesną diagnostykę obrazową i laboratoryjną, po chirurgię i stomatologię.</p>
+    </div>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="relative hidden overflow-hidden rounded-3xl bg-[#542F5F] sm:col-span-2 sm:block lg:col-span-1 lg:row-span-2" data-reveal>
+            <img src="images/2.png" width="441" alt="Safari – zakres usług" class="mx-auto h-full max-h-[30rem] w-auto object-contain lg:max-h-none">
+        </div>
+        <a href="zwierzeta-egzotyczne.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="0">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-leaf-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-leaf-100 text-leaf-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-frog"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Zwierzęta egzotyczne</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Króliki, gryzonie, gady, ptaki i nie tylko – od 30 g do 300 kg.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="profilaktyka.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="80">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-lagoon-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-lagoon-100 text-lagoon-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-shield-heart"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Profilaktyka, diagnostyka i leczenie</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Badania okresowe, szczepienia, odrobaczanie i opieka geriatryczna.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="chirurgia.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="160">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-ember-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-ember-100 text-ember-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-scissors"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Chirurgia</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Chirurgia miękka w bezpiecznym znieczuleniu wziewnym.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="stomatologia.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="0">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-sun-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sun-100 text-sun-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-tooth"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Stomatologia</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Higiena, leczenie i ekstrakcje – także u królików i gryzoni.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="rtg.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="80">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-plum-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-plum-100 text-plum-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-x-ray"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">RTG</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Radiografia bezpośrednia – szybkie i precyzyjne obrazowanie.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="rtg-stomatologiczne.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="160">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-lagoon-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-lagoon-100 text-lagoon-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-teeth"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">RTG stomatologiczne</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Radiowizjografia cyfrowa – widzimy to, co ukryte pod dziąsłem.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="usg.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="0">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-ember-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-ember-100 text-ember-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-wave-square"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">USG</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Jama brzuszna, klatka piersiowa, tarczyca, ciąża i biopsje.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="laboratorium.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="80">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-leaf-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-leaf-100 text-leaf-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-microscope"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Laboratorium</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Morfologia, biochemia, cytologia i szybkie testy na miejscu.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="dermatologia.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="160">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-sun-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sun-100 text-sun-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-paw"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Dermatologia</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Diagnostyka skóry i alergii, posiewy oraz odczulanie.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a><a href="chip.html" class="group relative isolate flex items-start gap-4 overflow-hidden rounded-3xl bg-white p-5 ring-1 sm:flex-col sm:gap-0 sm:p-6 ring-plum-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-plum-900/10" data-reveal data-reveal-delay="0">
+                <span aria-hidden="true" class="absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full bg-plum-100 opacity-60 transition-transform duration-500 group-hover:scale-[2.2]"></span>
+                <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-plum-100 text-plum-700 text-xl transition duration-300 group-hover:rotate-6 group-hover:scale-110"><i class="fa-solid fa-passport"></i></span>
+                <span class="flex flex-1 flex-col self-stretch">
+                <h3 class="font-display text-lg sm:mt-5 sm:text-xl font-extrabold leading-tight text-plum-800">Czipowanie i paszporty EU</h3>
+                <p class="mt-1 flex-1 text-sm leading-relaxed text-plum-950/65 sm:mt-2">Mikroczip i paszport od ręki – gotowi do podróży.</p>
+                <span class="mt-5 hidden items-center gap-2 text-sm font-extrabold text-plum-700 sm:inline-flex">Dowiedz się więcej <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i></span>
+                </span>
+                <i aria-hidden="true" class="fa-solid fa-chevron-right self-center text-plum-300 sm:hidden"></i>
+            </a>
+    </div>
+</section>
+
+<!-- ZESPÓŁ -->
+<section id="team" class="mt-24 scroll-mt-28 lg:mt-32" data-carousel>
+    <div class="container-x flex flex-col justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
+        <div>
+            <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>Poznaj nas</p>
+            <h2 class="section-title mt-4"><a href="zespol.html" class="hover:text-plum-600">Zespół</a></h2>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="zespol.html" class="btn btn-ghost">Cały zespół <i class="fa-solid fa-arrow-right"></i></a>
+            <button type="button" data-prev aria-label="Poprzedni" class="grid h-12 w-12 place-items-center rounded-full bg-white text-plum-800 ring-1 ring-plum-900/10 transition hover:bg-plum-700 hover:text-white disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-plum-800"><i class="fa-solid fa-arrow-left"></i></button>
+            <button type="button" data-next aria-label="Następny" class="grid h-12 w-12 place-items-center rounded-full bg-white text-plum-800 ring-1 ring-plum-900/10 transition hover:bg-plum-700 hover:text-white disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-plum-800"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+    <div class="container-x mt-10">
+        <div data-track class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-4 pb-6 sm:mx-0 sm:px-0"><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><img src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/6814da8b-1905-4a24-ad0e-c0a0891ea436/1m4beh/src/109cdadb-6b87-450a-8c44-dc80438d388a-05679837-97bc-422b-a490-1ca1863a6a66-lukasz-rawicki2.png" width="480" height="321" alt="lek. wet. Łukasz Rawicki" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Łukasz Rawicki</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">zwierzęta egzotyczne (króliki, gryzonie, gady, ptaki), psy, koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><a href="paulina-banaszkiewicz.html"><img src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/229e9619-2822-4891-b0ef-06bd88a8995e/uqx23b/src/5e5f1fbe-9e68-4eec-93cd-ee87aa22f8d4-60571249-84ba-43ed-bb3d-ed28317067f6-lek.-wet.-paulina-banaszkiewicz1.png" width="480" height="321" alt="lek. wet. Paulina Banaszkiewicz" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></a></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Paulina Banaszkiewicz</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">zwierzęta egzotyczne (króliki i gryzonie), psy, koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a><a href="paulina-banaszkiewicz.html" class="btn btn-ghost !px-4 !py-2">Więcej</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><a href="dominika-gruszczynska.html"><img src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/d47ceeeb-cf4b-4f4a-b0be-199bf5864686/d42epp/src/91f5d1dd-40a4-4288-8cfa-616a2848baec-e7bea66c-fc83-4051-959e-9f3c7c95a138-dominika-gruszczynska2.png" width="480" height="321" alt="lek. wet. Dominika Gruszczyńska" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></a></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Dominika Gruszczyńska</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">psy i koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a><a href="dominika-gruszczynska.html" class="btn btn-ghost !px-4 !py-2">Więcej</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><img src="https://img.magnific.com/free-vector/paw-print-heart-outline-style_78370-6318.jpg" width="480" height="321" alt="lek. wet. Michał Sawicki" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Michał Sawicki</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">zwierzęta egzotyczne (króliki, gryzonie), psy, koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><img src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/2c0a45dc-4058-4662-80d7-aae594a05711/1t2dpg/src/002431ad-56ec-45bf-a8bf-662d92adfb46-303ccc64-0f29-4af0-9443-a91270c98bba-alicja-chalupczynska2.png" width="480" height="321" alt="lek. wet. Alicja Chałupczyńska" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Alicja Chałupczyńska</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">psy i koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><img src="https://img.magnific.com/free-vector/paw-print-heart-outline-style_78370-6318.jpg" width="480" height="321" alt="lek. wet. Anna Spychalska" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Anna Spychalska</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">psy i koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><img src="https://public.cdn.os1.vetineo.com/03d84835-b098-42fc-ba64-4812e774b237/images/38d2e90a-9da4-4f56-8f6d-3bdd9ff38126/2un5ak/src/83d4e343-504e-40b9-ad3b-ec1da06e5176-c8536443-3f9e-4b28-8b94-c93614ac1bb4-marta-dabioch2.png" width="480" height="321" alt="lek. wet. Marta Dabioch" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Marta Dabioch</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">USG psy i koty</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a>
+                    </div>
+                </div>
+            </article><article class="group card flex w-[80%] shrink-0 snap-start flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-plum-900/10 sm:w-[46%] lg:w-[31.5%] xl:w-[23.6%]">
+                <div class="aspect-[4/3] overflow-hidden bg-plum-50"><img src="https://img.magnific.com/free-vector/paw-print-heart-outline-style_78370-6318.jpg" width="480" height="321" alt="lek. wet. Agnieszka Bitner" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"></div>
+                <div class="flex flex-1 flex-col p-6">
+                    <h3 class="font-display text-xl font-extrabold text-plum-800">lek. wet. Agnieszka Bitner</h3>
+                    <p class="mt-2 flex-1 text-xs font-bold uppercase tracking-wider text-plum-950/50">króliki i gryzonie, gady, ptaki, zwierzęta egzotyczne</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="#wizyta" class="btn btn-primary !px-4 !py-2">Umów wizytę</a>
+                    </div>
+                </div>
+            </article></div>
+    </div>
+</section>
+
+<!-- WIZYTA -->
+<section id="wizyta" class="container-x mt-20 scroll-mt-28 lg:mt-28">
+    <div class="relative isolate overflow-hidden rounded-[2.5rem] bg-plum-800 px-6 py-14 text-white sm:px-12 lg:py-20" data-reveal>
+        <div aria-hidden="true" class="absolute -left-20 -top-20 -z-10 h-80 w-80 rounded-full bg-ember/40 blur-3xl"></div>
+        <div aria-hidden="true" class="absolute -bottom-32 right-0 -z-10 h-96 w-96 rounded-full bg-lagoon/40 blur-3xl"></div>
+        <i aria-hidden="true" class="fa-solid fa-paw absolute right-10 top-8 -z-10 rotate-12 text-[9rem] text-white/5"></i>
+        <div class="mx-auto max-w-2xl text-center">
+            <p class="eyebrow !text-sun"><span class="h-px w-8 bg-sun"></span>Rezerwacja<span class="h-px w-8 bg-sun"></span></p>
+            <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl">Umów wizytę on-line</h2>
+            <p class="mt-4 text-plum-100/80">Wybierz wygodny system rezerwacji – albo zadzwoń: <a href="tel:+48422203501" class="font-bold text-sun hover:underline">+48 42 220 35 01</a></p>
+        </div>
+        <div class="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+            <a href="https://www.wettermin.pl/lecznice/lodz/3592" target="_blank" rel="noopener" class="group relative flex h-56 items-center justify-center overflow-hidden rounded-3xl ring-1 ring-white/20 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                <span class="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110" style="background-image:url('https://static-assets.sitesbi.com/templates/t8/images/wettermin/wettermin_bg1_1920.jpg')"></span>
+                <span class="absolute inset-0 bg-plum-950/40"></span>
+                <span class="relative text-center"><span class="block font-display text-4xl font-black">WetTermin</span><span class="mt-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold backdrop-blur">Zarezerwuj <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span></span>
+            </a>
+            <a href="https://safari-lodz.rezerwacja.vetineo.com" target="_blank" rel="noopener" class="group relative flex h-56 flex-col items-center justify-center gap-4 overflow-hidden rounded-3xl bg-white p-8 text-plum-800 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                <img alt="vetineo" src="https://static.sitesbi.com/8f9cdb48-8ad6-471d-ab41-e952cf9fd51e/images/full-size/860fb6a1-45e9-4d33-be45-2836148dd808-vetineo-logo.png" class="max-h-16 w-auto transition duration-500 group-hover:scale-105">
+                <span class="inline-flex items-center gap-2 rounded-full bg-plum-50 px-4 py-1.5 text-sm font-bold">Zarezerwuj <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ADOPCJA -->
+<section id="adoption" class="container-x mt-24 scroll-mt-28 lg:mt-32">
+    <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
+        <div>
+            <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>Adoptuj, nie kupuj</p>
+            <h2 class="section-title mt-4">Kącik adopcyjny</h2>
+        </div>
+        <p class="max-w-md text-plum-950/65">Te zwierzaki czekają na swój dom. Może to właśnie Ty?</p>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"><a href="bojkabajka.html" class="group relative block aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lg shadow-plum-900/10" data-reveal data-reveal-delay="0">
+                <img src="images/bajkabojka/1.jpeg" alt="Bajka i Bójka" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-plum-950/90 via-plum-950/20 to-transparent"></div>
+                <span class="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-ember-600 backdrop-blur"><i class="fa-solid fa-heart"></i> Szuka domu</span>
+                <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+                    <h3 class="font-display text-3xl font-black">Bajka i Bójka</h3>
+                    <p class="mt-1 text-sm font-semibold uppercase tracking-wider text-white/75">Siostry szukają domu w dwupaku</p>
+                    <span class="mt-4 inline-flex items-center gap-2 rounded-full bg-sun px-4 py-2 text-sm font-extrabold text-plum-950 transition group-hover:gap-3">Poznaj <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a><a href="bastek.html" class="group relative block aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lg shadow-plum-900/10" data-reveal data-reveal-delay="100">
+                <img src="images/bastek/1.jpeg" alt="Bastek" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-plum-950/90 via-plum-950/20 to-transparent"></div>
+                <span class="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-ember-600 backdrop-blur"><i class="fa-solid fa-heart"></i> Szuka domu</span>
+                <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+                    <h3 class="font-display text-3xl font-black">Bastek</h3>
+                    <p class="mt-1 text-sm font-semibold uppercase tracking-wider text-white/75">Rudzielec po przejściach</p>
+                    <span class="mt-4 inline-flex items-center gap-2 rounded-full bg-sun px-4 py-2 text-sm font-extrabold text-plum-950 transition group-hover:gap-3">Poznaj <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a><a href="jolka.html" class="group relative block aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lg shadow-plum-900/10" data-reveal data-reveal-delay="200">
+                <img src="images/jolka/2.jpeg" alt="Jolka" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-plum-950/90 via-plum-950/20 to-transparent"></div>
+                <span class="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-ember-600 backdrop-blur"><i class="fa-solid fa-heart"></i> Szuka domu</span>
+                <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+                    <h3 class="font-display text-3xl font-black">Jolka</h3>
+                    <p class="mt-1 text-sm font-semibold uppercase tracking-wider text-white/75">Jolka, Jolka pamiętasz</p>
+                    <span class="mt-4 inline-flex items-center gap-2 rounded-full bg-sun px-4 py-2 text-sm font-extrabold text-plum-950 transition group-hover:gap-3">Poznaj <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a></div>
+</section>
+
+<!-- OPINIE -->
+<section class="container-x mt-24 lg:mt-32" data-reveal>
+    <div class="text-center">
+        <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>Opinie<span class="h-px w-8 bg-ember-500"></span></p>
+        <h2 class="section-title mt-4">Co mówią o nas opiekunowie</h2>
+    </div>
+    <div class="card mt-10 p-4 sm:p-8">
+        <div class="sk-ww-google-reviews" data-embed-id="25721266"></div>
+    </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="contact" class="container-x mt-24 scroll-mt-28 lg:mt-32">
+    <div class="grid gap-6 lg:grid-cols-12">
+        <div class="relative isolate min-h-[22rem] overflow-hidden rounded-[2.5rem] lg:col-span-7" data-reveal>
+            <img src="images/3.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right">
+            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-white/95 via-white/70 to-transparent"></div>
+            <div class="flex h-full flex-col justify-between p-8 sm:p-12">
+                <div>
+                    <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>Kontakt</p>
+                    <h2 class="section-title mt-4 max-w-sm">Jesteśmy tu dla Was</h2>
+                </div>
+                <div class="mt-10 space-y-3">
+                    <a href="tel:+48422203501" class="group flex items-center gap-4"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-plum-700 text-xl text-white shadow-lg transition group-hover:scale-110"><i class="fa-solid fa-phone"></i></span><span class="font-display text-2xl font-black text-plum-800 sm:text-3xl">+48 42 220 35 01</span></a>
+                    <a href="mailto:przychodniasafari@gmail.com" class="group flex items-center gap-4"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-sun text-xl text-plum-950 shadow-lg transition group-hover:scale-110"><i class="fa-solid fa-envelope"></i></span><span class="break-all text-base font-bold text-plum-800 sm:text-lg">przychodniasafari@gmail.com</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
+            <div class="card p-7" data-reveal data-reveal-delay="100">
+                <div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-xl bg-lagoon-100 text-lagoon-700"><i class="fa-solid fa-location-dot"></i></span><h3 class="font-display text-xl font-extrabold text-plum-800">Lokalizacja</h3></div>
+                <address class="mt-4 not-italic leading-relaxed text-plum-950/75">ul. Julianowska 60<br>(róg ul. Owocowej)<br>91-473 Łódź, Polska</address>
+                <a href="https://maps.google.com/?q=Safari+Przychodnia+Weterynaryjna+Julianowska+60+Łódź" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-plum-700 hover:text-ember-600">Wyznacz trasę <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="card p-7" data-reveal data-reveal-delay="200">
+                <div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-xl bg-ember-100 text-ember-600"><i class="fa-regular fa-clock"></i></span><h3 class="font-display text-xl font-extrabold text-plum-800">Godziny otwarcia</h3></div>
+                <dl class="mt-4 space-y-2">
+                    <div class="flex justify-between gap-4 border-b border-dashed border-plum-900/10 pb-2"><dt class="text-plum-950/60">Poniedziałek – Piątek</dt><dd class="font-extrabold text-plum-800">08:00 – 21:00</dd></div>
+                    <div class="flex justify-between gap-4"><dt class="text-plum-950/60">Sobota</dt><dd class="font-extrabold text-plum-800">09:00 – 15:00</dd></div>
+                </dl>
+            </div>
+            <div class="card p-7 sm:col-span-2 lg:col-span-1" data-reveal data-reveal-delay="300">
+                <h3 class="font-display text-xl font-extrabold text-plum-800">Media społecznościowe</h3>
+                <div class="mt-4 flex gap-3"><a href="https://www.facebook.com/przychodniasafari" target="_blank" rel="noopener" aria-label="Facebook" class="grid h-12 w-12 place-items-center rounded-full bg-plum-50 text-lg text-plum-700 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.tiktok.com/@przychodnia.safari" target="_blank" rel="noopener" aria-label="TikTok" class="grid h-12 w-12 place-items-center rounded-full bg-plum-50 text-lg text-plum-700 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.instagram.com/przychodnia_safari" target="_blank" rel="noopener" aria-label="Instagram" class="grid h-12 w-12 place-items-center rounded-full bg-plum-50 text-lg text-plum-700 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-brands fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-6 overflow-hidden rounded-[2.5rem] ring-1 ring-plum-900/10" data-reveal>
+        <iframe title="Mapa – Safari Przychodnia Weterynaryjna" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2571.3894448444044!2d19.45405211105026!3d51.80123776471635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471bcaf235390961%3A0x844b1350a19a309!2sSafari%20Przychodnia%20Weterynaryjna!5e1!3m2!1spl!2spl!4v1786571986492!5m2!1spl!2spl"
+                class="block h-[380px] w-full sm:h-[450px]" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+</section>
+
+</main>
+<footer class="relative mt-24 overflow-hidden bg-plum-950 text-plum-100">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+        <div class="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-plum-600/30 blur-3xl"></div>
+        <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-ember/20 blur-3xl"></div>
+    </div>
+    <div class="h-2 bg-gradient-to-r from-lagoon via-sun to-ember"></div>
+    <div class="container-x relative grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+            <a href="index.html" class="inline-block rounded-2xl bg-white px-5 py-4 shadow-lg"><img src="images/logo.png" width="300" alt="Przychodnia Weterynaryjna Safari" class="h-12 w-auto"></a>
+            <p class="mt-6 max-w-sm font-display text-2xl font-extrabold text-white">Różne gatunki.<br>Ta sama troska.</p>
+            <div class="mt-6 flex gap-3"><a href="https://www.facebook.com/przychodniasafari" target="_blank" rel="noopener" aria-label="Facebook" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-sun hover:text-plum-950"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.tiktok.com/@przychodnia.safari" target="_blank" rel="noopener" aria-label="TikTok" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-sun hover:text-plum-950"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.instagram.com/przychodnia_safari" target="_blank" rel="noopener" aria-label="Instagram" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-sun hover:text-plum-950"><i class="fa-brands fa-instagram"></i></a></div>
+        </div>
+        <div class="lg:col-span-3">
+            <h2 class="text-xs font-extrabold uppercase tracking-[0.2em] text-sun">Zakres usług</h2>
+            <ul class="mt-5 space-y-2 text-sm text-plum-100/80"><li><a href="zwierzeta-egzotyczne.html" class="transition hover:text-sun">Zwierzęta egzotyczne</a></li><li><a href="profilaktyka.html" class="transition hover:text-sun">Profilaktyka, diagnostyka i leczenie</a></li><li><a href="chirurgia.html" class="transition hover:text-sun">Chirurgia</a></li><li><a href="stomatologia.html" class="transition hover:text-sun">Stomatologia</a></li><li><a href="rtg.html" class="transition hover:text-sun">RTG</a></li><li><a href="rtg-stomatologiczne.html" class="transition hover:text-sun">RTG stomatologiczne</a></li><li><a href="usg.html" class="transition hover:text-sun">USG</a></li><li><a href="laboratorium.html" class="transition hover:text-sun">Laboratorium</a></li><li><a href="dermatologia.html" class="transition hover:text-sun">Dermatologia</a></li><li><a href="chip.html" class="transition hover:text-sun">Czipowanie i paszporty EU</a></li></ul>
+        </div>
+        <div class="lg:col-span-3">
+            <h2 class="text-xs font-extrabold uppercase tracking-[0.2em] text-sun">Kontakt</h2>
+            <ul class="mt-5 space-y-4 text-sm text-plum-100/80">
+                <li class="flex gap-3"><i class="fa-solid fa-phone mt-1 text-sun"></i><a href="tel:+48422203501" class="text-base font-bold text-white hover:text-sun">+48 42 220 35 01</a></li>
+                <li class="flex gap-3"><i class="fa-solid fa-envelope mt-1 text-sun"></i><a href="mailto:przychodniasafari@gmail.com" class="break-all hover:text-sun">przychodniasafari@gmail.com</a></li>
+                <li class="flex gap-3"><i class="fa-solid fa-location-dot mt-1 text-sun"></i><span>ul. Julianowska 60 (róg ul. Owocowej)<br>91-473 Łódź, Polska</span></li>
+            </ul>
+        </div>
+        <div class="lg:col-span-2">
+            <h2 class="text-xs font-extrabold uppercase tracking-[0.2em] text-sun">Godziny otwarcia</h2>
+            <dl class="mt-5 space-y-3 text-sm">
+                <div><dt class="text-plum-100/60">Pon – Pt</dt><dd class="text-lg font-bold text-white">08:00 – 21:00</dd></div>
+                <div><dt class="text-plum-100/60">Sobota</dt><dd class="text-lg font-bold text-white">09:00 – 15:00</dd></div>
+            </dl>
+        </div>
+    </div>
+    <div class="relative border-t border-white/10">
+        <div class="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-plum-100/60 sm:flex-row">
+            <p>&copy; <span data-year></span> Przychodnia Weterynaryjna Safari · Łódź</p>
+            <a href="#main" class="inline-flex items-center gap-2 hover:text-sun">Do góry <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="https://widgets.sociablekit.com/google-reviews/widget.js" defer></script>
 </body>
 </html>
