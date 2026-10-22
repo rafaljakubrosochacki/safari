@@ -127,7 +127,10 @@
       box.setAttribute('role', 'dialog');
       box.setAttribute('aria-modal', 'true');
       box.innerHTML =
-        '<img class="max-h-[85vh] max-w-full rounded-2xl shadow-2xl" alt="">' +
+        '<figure class="flex max-h-full max-w-full flex-col items-center gap-3">' +
+        '<img class="max-h-[80vh] max-w-full rounded-2xl shadow-2xl" alt="">' +
+        '<figcaption class="flex items-center gap-3 text-center text-sm font-semibold text-plum-100/90"><span data-lb-count class="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-extrabold tabular-nums"></span><span data-lb-caption></span></figcaption>' +
+        '</figure>' +
         '<button type="button" data-lb-close aria-label="Zamknij" class="absolute right-4 top-4 grid h-12 w-12 place-items-center rounded-full bg-white/10 text-xl text-white hover:bg-white/20"><i class="fa-solid fa-xmark"></i></button>' +
         '<button type="button" data-lb-prev aria-label="Poprzednie" class="absolute left-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"><i class="fa-solid fa-chevron-left"></i></button>' +
         '<button type="button" data-lb-next aria-label="Następne" class="absolute right-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"><i class="fa-solid fa-chevron-right"></i></button>';
@@ -138,6 +141,8 @@
         idx = (i + links.length) % links.length;
         img.src = links[idx].href;
         img.alt = links[idx].querySelector('img')?.alt || '';
+        box.querySelector('[data-lb-caption]').textContent = img.alt;
+        box.querySelector('[data-lb-count]').textContent = idx + 1 + ' / ' + links.length;
       };
       const open = (i) => {
         show(i);
