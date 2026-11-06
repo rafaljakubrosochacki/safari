@@ -8,6 +8,10 @@ module.exports = merge(common, {
     liveReload: true,
     hot: true,
     open: true,
-    static: ['./'],
+    static: {
+      directory: './',
+      // Nie obserwuj zależności, builda ani repozytorium – w iCloud to bardzo spowalnia serwer.
+      watch: { ignored: /node_modules|dist|\.git|\.idea/ },
+    },
   },
 });
