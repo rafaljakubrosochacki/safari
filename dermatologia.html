@@ -1,180 +1,227 @@
 <!DOCTYPE html>
-<html lang="en" class="wide wow-animation">
+<html lang="pl" class="scroll-smooth">
 <head>
-    <!-- Site Title-->
-    <title>Dermatologia</title>
-    <meta name="description" content="Dermatologia">
-    <meta property="og:title" content="Dermatologia">
-    <meta property="og:description" content="Dermatologia">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dermatologia – Przychodnia Weterynaryjna Safari</title>
+    <meta name="description" content="Dermatologia – Przychodnia Weterynaryjna Safari w Łodzi. Diagnostyka skóry i alergii, posiewy oraz odczulanie.">
+    <meta property="og:title" content="Dermatologia – Przychodnia Weterynaryjna Safari">
+    <meta property="og:description" content="Dermatologia – Przychodnia Weterynaryjna Safari w Łodzi. Diagnostyka skóry i alergii, posiewy oraz odczulanie.">
     <meta property="og:image" content="/images/logo.png">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="theme-color" content="#552D5F">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest.json">
-    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300,300italic,400,600,700,900" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
-            integrity="sha512-UDJtJXfzfsiPPgnI5S1000FPLBHMhvzAMX15I+qG2E2OAzC9P1JzUwJOfnypXiOH7MRPaqzhPbBGDNNj7zBfoA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS (CDN) + konfiguracja kolorów Safari -->
+    <script src="https://cdn.tailwindcss.com/3.4.16?plugins=typography"></script>
+    <script src="js/tailwind.config.js"></script>
 </head>
-<body>
-<!-- Page-->
-<div class="page text-center">
-    <!-- Page Header-->
-    <header class="page-head">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-            <nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed"
-                 data-md-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fullwidth"
-                 data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static"
-                 data-sm-stick-up-offset="50px" data-lg-stick-up-offset="90px" class="rd-navbar">
-                <div class="rd-navbar-inner">
-                    <!-- RD Navbar Panel-->
-                    <div class="rd-navbar-panel">
-                        <!-- RD Navbar Toggle-->
-                        <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span>
-                        </button>
-                        <!-- RD Navbar Brand-->
-                        <div class="rd-navbar-brand"><a href="index.html#" class="brand-name"><img src="images/logo.png"
-                                                                                                  width="300"
-                                                                                                  alt="Dermatologia"></a>
+<body class="min-h-screen overflow-x-clip">
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-plum-700 focus:px-4 focus:py-2 focus:text-white">Przejdź do treści</a>
+<header class="sticky top-0 z-50">
+    <div class="container-x pt-3">
+        <div data-header-bar class="flex h-16 items-center justify-between gap-4 rounded-2xl bg-white/80 px-3 ring-1 ring-plum-900/5 backdrop-blur-xl transition-all duration-300 sm:px-4 lg:h-20 lg:px-6">
+            <a href="index.html" class="shrink-0" aria-label="Przychodnia Weterynaryjna Safari – strona główna">
+                <img src="images/logo.png" width="300" alt="Przychodnia Weterynaryjna Safari" class="h-10 w-auto sm:h-11 lg:h-14">
+            </a>
+            <nav class="hidden lg:block" aria-label="Główna nawigacja">
+                <ul class="flex items-center text-[15px] font-bold text-plum-900">
+                    <li><a class="nav-link" href="index.html#contact">Kontakt</a></li>
+                    <li class="group relative">
+                        <a class="nav-link inline-flex items-center gap-1.5" href="index.html#services">Zakres usług <i class="fa-solid fa-chevron-down text-[10px] transition duration-300 group-hover:rotate-180"></i></a>
+                        <div class="invisible absolute left-1/2 top-full -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 w-[36rem]">
+                            <div class="grid grid-cols-2 gap-1 rounded-2xl bg-white p-3 shadow-2xl shadow-plum-900/15 ring-1 ring-plum-900/5">
+                            <a href="zwierzeta-egzotyczne.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-leaf-100 text-leaf-700"><i class="fa-solid fa-frog"></i></span>Zwierzęta egzotyczne</a><a href="profilaktyka.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-lagoon-100 text-lagoon-700"><i class="fa-solid fa-shield-heart"></i></span>Profilaktyka, diagnostyka i leczenie</a><a href="chirurgia.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ember-100 text-ember-700"><i class="fa-solid fa-scissors"></i></span>Chirurgia</a><a href="stomatologia.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sun-100 text-sun-700"><i class="fa-solid fa-tooth"></i></span>Stomatologia</a><a href="rtg.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-plum-100 text-plum-700"><i class="fa-solid fa-x-ray"></i></span>RTG</a><a href="rtg-stomatologiczne.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-lagoon-100 text-lagoon-700"><i class="fa-solid fa-teeth"></i></span>RTG stomatologiczne</a><a href="usg.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ember-100 text-ember-700"><i class="fa-solid fa-wave-square"></i></span>USG</a><a href="laboratorium.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-leaf-100 text-leaf-700"><i class="fa-solid fa-microscope"></i></span>Laboratorium</a><a href="dermatologia.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sun-100 text-sun-700"><i class="fa-solid fa-paw"></i></span>Dermatologia</a><a href="chip.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-plum-100 text-plum-700"><i class="fa-solid fa-passport"></i></span>Czipowanie i paszporty EU</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="rd-navbar-nav-wrap">
-                        <!-- RD Navbar Nav-->
-                        <ul class="rd-navbar-nav">
-
-                            <li><a href="index.html#contact" data-toggle="collapse" data-target=".navbar-collapse">Kontakt</a>
-                            </li>
-                            <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="index.html#services"
-                                                                                     data-toggle="collapse"
-                                                                                     data-target=".navbar-collapse">Zakres
-                                usług</a>
-                                <!-- RD Navbar Dropdown-->
-                                <ul class="rd-navbar-dropdown">
-                                    <li><a href="zwierzeta-egzotyczne.html">Zwierzęta egzotyczne</a></li>
-                                    <li><a href="profilaktyka.html">Profilaktyka, diagnostyka i leczenie</a>
-                                    </li>
-                                    <li><a href="chirurgia.html">Chirurgia</a></li>
-                                    <li><a href="stomatologia.html">Stomatologia</a></li>
-                                    <li><a href="rtg.html">RTG</a></li>
-                                    <li><a href="rtg-stomatologiczne.html">RTG stomatologiczne</a></li>
-                                    <li><a href="usg.html">Usg</a></li>
-                                    <li><a href="laboratorium.html">Laboratorium</a></li>
-                                    <li><a href="dermatologia.html">Dermatologia</a></li>
-                                    <li><a href="chip.html">Czipowanie i paszporty EU</a></li>
-                                </ul>
-                            </li>
-                            <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="zespol.html"
-                                                                                     data-toggle="collapse"
-                                                                                     data-target=".navbar-collapse">Zespół
-                            </a>
-                                <!-- RD Navbar Dropdown-->
-                                <ul class="rd-navbar-dropdown">
-                                    <li><a href="zespol.html#lekarze">Lekarze
-                                        weterynarii</a></li>
-                                    <li><a href="zespol.html#technicy">Technicy
-                                        weterynarii</a></li>
-                                    <li><a href="zespol.html#recepcja">Recepcja
-                                    </a></li>
-                                    <li><a href="zespol.html#administracja">Administracja
-                                    </a></li>
-                                </ul>
-                            </li>
-                            <li><a data-target=".navbar-collapse" data-toggle="collapse" href="dla-opiekuna.html">Dla
-                                opiekuna
-                            </a></li>
-                            <li><a class="appointment" data-target=".navbar-collapse" data-toggle="collapse"
-                                   href="index.html#wizyta">Umów
-                                wizytę</a></li>
-                            <li><a href="index.html#adoption" data-toggle="collapse" data-target=".navbar-collapse">Kącik
-                                adopcyjny</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    </li>
+                    <li class="group relative">
+                        <a class="nav-link inline-flex items-center gap-1.5" href="zespol.html">Zespół <i class="fa-solid fa-chevron-down text-[10px] transition duration-300 group-hover:rotate-180"></i></a>
+                        <div class="invisible absolute left-1/2 top-full -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 w-64">
+                            <div class="rounded-2xl bg-white p-3 shadow-2xl shadow-plum-900/15 ring-1 ring-plum-900/5"><a href="zespol.html#lekarze" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-user-doctor w-5 text-center text-ember-500"></i>Lekarze weterynarii</a><a href="zespol.html#technicy" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-syringe w-5 text-center text-ember-500"></i>Technicy weterynarii</a><a href="zespol.html#recepcja" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-phone w-5 text-center text-ember-500"></i>Recepcja</a><a href="zespol.html#administracja" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-plum-900 transition hover:bg-plum-50"><i class="fa-solid fa-briefcase w-5 text-center text-ember-500"></i>Administracja</a></div>
+                        </div>
+                    </li>
+                    <li><a class="nav-link" href="dla-opiekuna.html">Dla opiekuna</a></li>
+                    <li><a class="nav-link" href="index.html#adoption">Kącik adopcyjny</a></li>
+                </ul>
             </nav>
-        </div>
-    </header>
-    <!-- Page Content-->
-    <main class="page-content">
-        <hr class="offset-top-96">
-        <section>
-            <div class="shell shell-wide">
-                <div class="range text-sm-left">
-                    <div class="cell-xl-7 cell-md-7">
-                        <img src="images/dermatologia.png"
-                             alt="animal"
-                             style="width: 100%; max-width: 700px; padding: 10px"/>
-                    </div>
-                    <div class="cell-md-5 cell-xl-5 cell-xs-middle offset-top-40 offset-md-top-30">
-                        <div class="range">
-                            <div class="cell-md-12 cell-sm-12 text-sm-center text-md-left">
-                                <div class="inset-xl-left-40">
-                                    <h4>Dermatologia</h4>
-                                </div>
-                            </div>
-                            <div class="cell-md-12 cell-sm-12 offset-top-40 offset-sm-top-40 offset-md-top-40">
-                                <div class="inset-xl-left-40">
-                                    <p class="text-left inset-right-10">
-                                        W Przychodni Safari zapewniamy kompleksową opiekę dermatologiczną. Oferujemy szeroki zakres badań diagnostycznych:
-                                    </p>
-                                    <ul class="list-basic">
-                                        <li>zeskrobiny oraz diagnostykę pasożytów skórnych</li>
-                                        <li>testy z taśmą przylepną (Trichogram)</li>
-                                        <li>badania cytologiczne:
-                                            <ul class="list-basic">
-                                                <li>ran</li>
-                                                <li>zmian skórnych</li>
-                                                <li>zmian rozrostowych (guzów, guzków, brodawek itp.)</li>
-                                                <li>kanałów słuchowych</li>
-                                                <li>pochwy (określenie fazy cyklu rujowego oraz rozpoznawanie stanów zapalnych)</li>
-                                            </ul>
-                                        </li>
-                                        <li>wymazy i posiewy bakteriologiczne z antybiogramem (określeniem antybiotykowrażliwości)</li>
-                                        <li>diagnostykę chorób grzybiczych</li>
-                                        <li>biopsje cienkoigłowe oraz badania histopatologiczne zmian skórnych</li>
-                                        <li>diagnostykę alergii w oparciu o testy serologiczne oraz immunoterapię swoistą (odczulanie)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-center gap-2">
+                <a href="tel:+48422203501" class="hidden h-11 w-11 place-items-center rounded-full bg-plum-50 text-plum-700 transition hover:bg-plum-100 sm:grid lg:hidden xl:grid" aria-label="Zadzwoń +48 42 220 35 01"><i class="fa-solid fa-phone"></i></a>
+                <a href="index.html#wizyta" class="btn btn-primary hidden sm:inline-flex"><i class="fa-regular fa-calendar-check"></i> Umów wizytę</a>
+                <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"
+                        class="grid h-11 w-11 place-items-center rounded-full bg-plum-700 text-white transition hover:bg-plum-800 lg:hidden">
+                    <i data-icon-open class="fa-solid fa-bars"></i><i data-icon-close class="fa-solid fa-xmark hidden"></i>
+                </button>
             </div>
-        </section>
-        <div id="back"></div>
-        <section class="offset-top-96">
-            <p class="text-graylight small text-bold text-uppercase"><a href="index.html#">Wróć</a></p>
-        </section>
-        <hr class="offset-top-40">
-    </main>
-    <!-- Page Footer-->
-    <footer class="page-footer">
-        <div class="container"><span>&#169;</span> <span id="copyright-year"></span>
-            <!--            <hr class="divider divider-default divider-vertical">-->
-            <!--            <a href="privacy.html">Polityka prywatności</a>-->
         </div>
-    </footer>
-    <!-- {%FOOTER_LINK}-->
-</div>
-<!-- Java script-->
-<script src="js/core.min.js"></script>
-<script src="js/script.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.rd-navbar-nav li a').on('click', function () {
-            if ($('.rd-navbar-toggle').hasClass('active')) {
-                $('.rd-navbar-toggle').trigger('click');
-            }
-        });
-    });
-</script>
+        <div id="mobile-menu" class="mt-2 hidden max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-white p-3 text-base font-bold text-plum-900 shadow-2xl shadow-plum-900/15 ring-1 ring-plum-900/5 lg:hidden">
+            <a href="index.html#contact" class="block rounded-xl px-3 py-3 hover:bg-plum-50">Kontakt</a>
+            <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 hover:bg-plum-50">Zakres usług <i class="fa-solid fa-chevron-down text-xs transition group-open:rotate-180"></i></summary>
+                <div class="mb-2 ml-3 border-l-2 border-sun-200 pl-2 text-[15px] font-semibold"><a href="zwierzeta-egzotyczne.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Zwierzęta egzotyczne</a><a href="profilaktyka.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Profilaktyka, diagnostyka i leczenie</a><a href="chirurgia.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Chirurgia</a><a href="stomatologia.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Stomatologia</a><a href="rtg.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">RTG</a><a href="rtg-stomatologiczne.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">RTG stomatologiczne</a><a href="usg.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">USG</a><a href="laboratorium.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Laboratorium</a><a href="dermatologia.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Dermatologia</a><a href="chip.html" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Czipowanie i paszporty EU</a></div>
+            </details>
+            <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 hover:bg-plum-50">Zespół <i class="fa-solid fa-chevron-down text-xs transition group-open:rotate-180"></i></summary>
+                <div class="mb-2 ml-3 border-l-2 border-sun-200 pl-2 text-[15px] font-semibold"><a href="zespol.html#lekarze" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Lekarze weterynarii</a><a href="zespol.html#technicy" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Technicy weterynarii</a><a href="zespol.html#recepcja" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Recepcja</a><a href="zespol.html#administracja" class="block rounded-lg px-3 py-2 text-plum-900/80 hover:bg-plum-50">Administracja</a></div>
+            </details>
+            <a href="dla-opiekuna.html" class="block rounded-xl px-3 py-3 hover:bg-plum-50">Dla opiekuna</a>
+            <a href="index.html#adoption" class="block rounded-xl px-3 py-3 hover:bg-plum-50">Kącik adopcyjny</a>
+            <div class="mt-2 grid gap-2 border-t border-plum-900/5 pt-3 sm:grid-cols-2">
+                <a href="index.html#wizyta" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Umów wizytę</a>
+                <a href="tel:+48422203501" class="btn btn-ghost"><i class="fa-solid fa-phone"></i> +48 42 220 35 01</a>
+            </div>
+        </div>
+    </div>
+</header>
+<main id="main">
+<section class="relative isolate">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-28 bottom-0 -z-10 overflow-hidden [mask-image:linear-gradient(to_bottom,black_55%,transparent)]">
+        <div class="absolute -left-32 -top-40 h-[26rem] w-[26rem] animate-blob rounded-full bg-lagoon/25 blur-3xl"></div>
+        <div class="absolute -right-24 top-10 h-[30rem] w-[30rem] animate-blob rounded-full bg-plum-300/30 blur-3xl [animation-delay:-5s]"></div>
+        <div class="absolute bottom-0 left-1/3 h-72 w-72 animate-blob rounded-full bg-sun/25 blur-3xl [animation-delay:-9s]"></div>
+    </div>
+    <div class="container-x pb-10 pt-10 lg:pb-14 lg:pt-16">
+        <nav aria-label="Ścieżka" class="text-sm font-semibold text-plum-700/60"><a href="index.html" class="hover:text-plum-700">Start</a> <span class="text-plum-300">/</span> <a href="index.html#services" class="hover:text-plum-700">Zakres usług</a> <span class="text-plum-300">/</span> <span class="text-plum-800">Dermatologia</span></nav>
+        <p class="eyebrow mt-8"><span class="h-px w-8 bg-ember-500"></span>Dermatologia</p>
+        <h1 class="mt-3 max-w-4xl font-display text-4xl font-black leading-[1.02] tracking-tight text-plum-800 sm:text-5xl lg:text-6xl">Dermatologia</h1>
+        <p class="mt-5 max-w-2xl text-lg text-plum-950/70">Diagnostyka skóry i alergii, posiewy oraz odczulanie.</p>
+    </div>
+</section>
+<section class="container-x">
+    <div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:sticky lg:top-32 lg:col-span-5" data-reveal>
+            <div class="relative mx-auto max-w-lg">
+                <div aria-hidden="true" class="absolute inset-0 translate-x-3 translate-y-3 rotate-2 rounded-[2rem] bg-sun-100"></div>
+                <img src="images/uslugi/dermatologia.svg" alt="Dermatologia" class="relative aspect-square w-full rounded-[2rem] object-cover shadow-2xl shadow-plum-900/10 ring-1 ring-black/5">
+                <span class="absolute -bottom-5 -left-3 grid h-16 w-16 animate-float place-items-center rounded-2xl bg-white text-2xl shadow-xl ring-1 ring-plum-900/5 text-sun-700"><i class="fa-solid fa-paw"></i></span>
+            </div>
+        </div>
+        <article class="prose prose-lg max-w-none lg:col-span-7" data-reveal data-reveal-delay="120">
+            <div class="card not-prose mb-8 flex items-start gap-4 p-5">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sun-100 text-sun-700"><i class="fa-solid fa-paw"></i></span>
+                <p class="text-sm leading-relaxed text-plum-950/70"><strong class="text-plum-800">Przychodnia Safari, Łódź.</strong> Pon–Pt 8:00–21:00, Sob 9:00–15:00. Zapisy on-line lub pod numerem <a href="tel:+48422203501" class="font-bold text-plum-700 underline decoration-sun decoration-2 underline-offset-2">+48 42 220 35 01</a>.</p>
+            </div>
+            <p>W Przychodni Safari zapewniamy kompleksową opiekę dermatologiczną. Oferujemy szeroki zakres badań diagnostycznych:</p> <ul> <li>zeskrobiny oraz diagnostykę pasożytów skórnych</li> <li>testy z taśmą przylepną (Trichogram)</li> <li>badania cytologiczne: <ul> <li>ran</li> <li>zmian skórnych</li> <li>zmian rozrostowych (guzów, guzków, brodawek itp.)</li> <li>kanałów słuchowych</li> <li>pochwy (określenie fazy cyklu rujowego oraz rozpoznawanie stanów zapalnych)</li> </ul></li> <li>wymazy i posiewy bakteriologiczne z antybiogramem (określeniem antybiotykowrażliwości)</li> <li>diagnostykę chorób grzybiczych</li> <li>biopsje cienkoigłowe oraz badania histopatologiczne zmian skórnych</li> <li>diagnostykę alergii w oparciu o testy serologiczne oraz immunoterapię swoistą (odczulanie)</li> </ul>
+        </article>
+    </div>
+</section>
+<section class="container-x mt-20 lg:mt-28" aria-labelledby="galeria-title">
+    <div class="relative isolate">
+        <div aria-hidden="true" class="absolute -left-10 top-10 -z-10 h-56 w-56 rounded-full bg-sun/20 blur-3xl"></div>
+        <div aria-hidden="true" class="absolute -right-10 bottom-0 -z-10 h-64 w-64 rounded-full bg-plum-300/25 blur-3xl"></div>
+        <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+            <div>
+                <p class="eyebrow"><span class="h-px w-8 bg-ember-500"></span>Galeria</p>
+                <h2 id="galeria-title" class="mt-3 font-display text-3xl font-black text-plum-800 sm:text-4xl">Diagnostyka skóry z bliska</h2>
+            </div>
+            <p class="flex items-center gap-2 text-sm font-semibold text-plum-950/55"><i class="fa-solid fa-camera text-ember-600"></i> Zdjęcia z naszej przychodni · kliknij, aby powiększyć</p>
+        </div>
+        <div class="mt-8 gap-4 columns-2 lg:columns-4">
+            <a href="images/galeria/dermatologia/01.webp" data-lightbox class="group relative mb-4 block break-inside-avoid overflow-hidden rounded-3xl bg-plum-100 shadow-lg shadow-plum-900/10 ring-1 ring-plum-900/5 transition duration-500 hover:-translate-y-1 hover:-rotate-1 hover:shadow-2xl hover:shadow-plum-900/20" data-reveal data-reveal-delay="0">
+                <img src="images/galeria/dermatologia/01.webp" alt="Preparat cytologiczny skóry pod mikroskopem" width="936" height="936" loading="lazy" decoding="async" class="h-auto w-full transition duration-700 group-hover:scale-105">
+                <span aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-950/75 via-plum-950/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100"></span>
+                <span aria-hidden="true" class="pointer-events-none absolute inset-x-4 bottom-4 translate-y-2 text-sm font-bold leading-snug text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Preparat cytologiczny skóry pod mikroskopem</span>
+                <span aria-hidden="true" class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-plum-800 opacity-0 backdrop-blur transition group-hover:opacity-100"><i class="fa-solid fa-expand"></i></span>
+            </a>
+            <a href="images/galeria/dermatologia/02.webp" data-lightbox class="group relative mb-4 block break-inside-avoid overflow-hidden rounded-3xl bg-plum-100 shadow-lg shadow-plum-900/10 ring-1 ring-plum-900/5 transition duration-500 hover:-translate-y-1 hover:rotate-1 hover:shadow-2xl hover:shadow-plum-900/20" data-reveal data-reveal-delay="80">
+                <img src="images/galeria/dermatologia/02.webp" alt="Pobieranie materiału do badania cytologicznego" width="936" height="1248" loading="lazy" decoding="async" class="h-auto w-full transition duration-700 group-hover:scale-105">
+                <span aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-950/75 via-plum-950/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100"></span>
+                <span aria-hidden="true" class="pointer-events-none absolute inset-x-4 bottom-4 translate-y-2 text-sm font-bold leading-snug text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Pobieranie materiału do badania cytologicznego</span>
+                <span aria-hidden="true" class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-plum-800 opacity-0 backdrop-blur transition group-hover:opacity-100"><i class="fa-solid fa-expand"></i></span>
+            </a>
+            <a href="images/galeria/dermatologia/03.webp" data-lightbox class="group relative mb-4 block break-inside-avoid overflow-hidden rounded-3xl bg-plum-100 shadow-lg shadow-plum-900/10 ring-1 ring-plum-900/5 transition duration-500 hover:-translate-y-1 hover:-rotate-1 hover:shadow-2xl hover:shadow-plum-900/20" data-reveal data-reveal-delay="160">
+                <img src="images/galeria/dermatologia/03.webp" alt="Badanie ucha psa otoskopem" width="1108" height="1477" loading="lazy" decoding="async" class="h-auto w-full transition duration-700 group-hover:scale-105">
+                <span aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-950/75 via-plum-950/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100"></span>
+                <span aria-hidden="true" class="pointer-events-none absolute inset-x-4 bottom-4 translate-y-2 text-sm font-bold leading-snug text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Badanie ucha psa otoskopem</span>
+                <span aria-hidden="true" class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-plum-800 opacity-0 backdrop-blur transition group-hover:opacity-100"><i class="fa-solid fa-expand"></i></span>
+            </a>
+            <a href="images/galeria/dermatologia/04.webp" data-lightbox class="group relative mb-4 block break-inside-avoid overflow-hidden rounded-3xl bg-plum-100 shadow-lg shadow-plum-900/10 ring-1 ring-plum-900/5 transition duration-500 hover:-translate-y-1 hover:rotate-1 hover:shadow-2xl hover:shadow-plum-900/20" data-reveal data-reveal-delay="240">
+                <img src="images/galeria/dermatologia/04.webp" alt="Obraz mikroskopowy – cytologia" width="936" height="1248" loading="lazy" decoding="async" class="h-auto w-full transition duration-700 group-hover:scale-105">
+                <span aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-950/75 via-plum-950/10 to-transparent opacity-0 transition duration-500 group-hover:opacity-100"></span>
+                <span aria-hidden="true" class="pointer-events-none absolute inset-x-4 bottom-4 translate-y-2 text-sm font-bold leading-snug text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Obraz mikroskopowy – cytologia</span>
+                <span aria-hidden="true" class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-plum-800 opacity-0 backdrop-blur transition group-hover:opacity-100"><i class="fa-solid fa-expand"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="container-x mt-20 lg:mt-28" data-reveal>
+    <div class="relative isolate overflow-hidden rounded-[2.5rem] bg-plum-700 px-6 py-12 text-white sm:px-12 lg:py-16">
+        <div aria-hidden="true" class="absolute -right-16 -top-16 -z-10 h-64 w-64 rounded-full bg-ember/40 blur-3xl"></div>
+        <div aria-hidden="true" class="absolute -bottom-24 left-10 -z-10 h-64 w-64 rounded-full bg-lagoon/40 blur-3xl"></div>
+        <i aria-hidden="true" class="fa-solid fa-paw absolute -bottom-6 right-6 -z-10 rotate-12 text-[10rem] text-white/5"></i>
+        <div class="flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+            <div>
+                <h2 class="font-display text-3xl font-black sm:text-4xl">Masz pytania? Umów wizytę.</h2>
+                <p class="mt-3 max-w-xl text-plum-100/80">Zarezerwuj termin on-line lub zadzwoń do recepcji – chętnie pomożemy.</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="index.html#wizyta" class="btn btn-sun"><i class="fa-regular fa-calendar-check"></i> Umów wizytę</a>
+                <a href="tel:+48422203501" class="btn btn-ghost-dark"><i class="fa-solid fa-phone"></i> +48 42 220 35 01</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container-x mt-16" data-reveal>
+    <h2 class="font-display text-2xl font-extrabold text-plum-800">Pozostałe usługi</h2>
+    <div class="mt-5 flex flex-wrap gap-2"><a href="zwierzeta-egzotyczne.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-frog text-xs opacity-70"></i>Zwierzęta egzotyczne</a><a href="profilaktyka.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-shield-heart text-xs opacity-70"></i>Profilaktyka, diagnostyka i leczenie</a><a href="chirurgia.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-scissors text-xs opacity-70"></i>Chirurgia</a><a href="stomatologia.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-tooth text-xs opacity-70"></i>Stomatologia</a><a href="rtg.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-x-ray text-xs opacity-70"></i>RTG</a><a href="rtg-stomatologiczne.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-teeth text-xs opacity-70"></i>RTG stomatologiczne</a><a href="usg.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-wave-square text-xs opacity-70"></i>USG</a><a href="laboratorium.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-microscope text-xs opacity-70"></i>Laboratorium</a><a href="chip.html" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-plum-800 ring-1 ring-plum-900/10 transition hover:-translate-y-0.5 hover:bg-plum-700 hover:text-white"><i class="fa-solid fa-passport text-xs opacity-70"></i>Czipowanie i paszporty EU</a></div>
+</section>
+<div class="container-x mt-12"><a href="index.html" class="group inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-plum-700 hover:text-ember-600"><i class="fa-solid fa-arrow-left transition group-hover:-translate-x-1"></i> Wróć na stronę główną</a></div>
+</main>
+<footer class="relative mt-24 overflow-hidden bg-plum-950 text-plum-100">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+        <div class="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-plum-600/30 blur-3xl"></div>
+        <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-ember/20 blur-3xl"></div>
+    </div>
+    <div class="h-2 bg-gradient-to-r from-lagoon via-sun to-ember"></div>
+    <div class="container-x relative grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+            <a href="index.html" class="inline-block rounded-2xl bg-white px-5 py-4 shadow-lg"><img src="images/logo.png" width="300" alt="Przychodnia Weterynaryjna Safari" class="h-12 w-auto"></a>
+            <p class="mt-6 max-w-sm font-display text-2xl font-extrabold text-white">Różne gatunki.<br>Ta sama troska.</p>
+            <div class="mt-6 flex gap-3"><a href="https://www.facebook.com/przychodniasafari" target="_blank" rel="noopener" aria-label="Facebook" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-sun hover:text-plum-950"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.tiktok.com/@przychodnia.safari" target="_blank" rel="noopener" aria-label="TikTok" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-sun hover:text-plum-950"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.instagram.com/przychodnia_safari" target="_blank" rel="noopener" aria-label="Instagram" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-sun hover:text-plum-950"><i class="fa-brands fa-instagram"></i></a></div>
+        </div>
+        <div class="lg:col-span-3">
+            <h2 class="text-xs font-extrabold uppercase tracking-[0.2em] text-sun">Zakres usług</h2>
+            <ul class="mt-5 space-y-2 text-sm text-plum-100/80"><li><a href="zwierzeta-egzotyczne.html" class="transition hover:text-sun">Zwierzęta egzotyczne</a></li><li><a href="profilaktyka.html" class="transition hover:text-sun">Profilaktyka, diagnostyka i leczenie</a></li><li><a href="chirurgia.html" class="transition hover:text-sun">Chirurgia</a></li><li><a href="stomatologia.html" class="transition hover:text-sun">Stomatologia</a></li><li><a href="rtg.html" class="transition hover:text-sun">RTG</a></li><li><a href="rtg-stomatologiczne.html" class="transition hover:text-sun">RTG stomatologiczne</a></li><li><a href="usg.html" class="transition hover:text-sun">USG</a></li><li><a href="laboratorium.html" class="transition hover:text-sun">Laboratorium</a></li><li><a href="dermatologia.html" class="transition hover:text-sun">Dermatologia</a></li><li><a href="chip.html" class="transition hover:text-sun">Czipowanie i paszporty EU</a></li></ul>
+        </div>
+        <div class="lg:col-span-3">
+            <h2 class="text-xs font-extrabold uppercase tracking-[0.2em] text-sun">Kontakt</h2>
+            <ul class="mt-5 space-y-4 text-sm text-plum-100/80">
+                <li class="flex gap-3"><i class="fa-solid fa-phone mt-1 text-sun"></i><a href="tel:+48422203501" class="text-base font-bold text-white hover:text-sun">+48 42 220 35 01</a></li>
+                <li class="flex gap-3"><i class="fa-solid fa-envelope mt-1 text-sun"></i><a href="mailto:przychodniasafari@gmail.com" class="break-all hover:text-sun">przychodniasafari@gmail.com</a></li>
+                <li class="flex gap-3"><i class="fa-solid fa-location-dot mt-1 text-sun"></i><span>ul. Julianowska 60 (róg ul. Owocowej)<br>91-473 Łódź, Polska</span></li>
+            </ul>
+        </div>
+        <div class="lg:col-span-2">
+            <h2 class="text-xs font-extrabold uppercase tracking-[0.2em] text-sun">Godziny otwarcia</h2>
+            <dl class="mt-5 space-y-3 text-sm">
+                <div><dt class="text-plum-100/60">Pon – Pt</dt><dd class="text-lg font-bold text-white">08:00 – 21:00</dd></div>
+                <div><dt class="text-plum-100/60">Sobota</dt><dd class="text-lg font-bold text-white">09:00 – 15:00</dd></div>
+            </dl>
+        </div>
+    </div>
+    <div class="relative border-t border-white/10">
+        <div class="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-plum-100/60 sm:flex-row">
+            <p>&copy; <span data-year></span> Przychodnia Weterynaryjna Safari · Łódź</p>
+            <a href="#main" class="inline-flex items-center gap-2 hover:text-sun">Do góry <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </div>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
